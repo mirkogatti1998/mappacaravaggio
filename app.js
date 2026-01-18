@@ -34,6 +34,32 @@ function syncHeaderHeight(){
 }
 window.addEventListener("resize", syncHeaderHeight);
 syncHeaderHeight();
+// ===== Topbar collassabile (mobile) =====
+const topbarToggle = document.getElementById("toggleTopbar");
+
+function setTopbarCollapsed(collapsed){
+  if (!headerEl) return;
+  headerEl.classList.toggle("is-collapsed", collapsed);
+
+  if (topbarToggle){
+    topbarToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    topbarToggle.textContent = collapsed ? "▴" : "▾";
+    topbarToggle.setAttribute("aria-label", collapsed ? "Espandi pannello" : "Comprimi pannello");
+  }
+
+  // importantissimo: aggiorna variabile CSS usata dal drawer e layout
+  syncHeaderHeight();
+
+  // Leaflet: dopo cambi di layout, forza ridisegno mappa (evita glitch)
+  setTimeout(() => map.invalidateSize(), 220);
+}
+
+if (topbarToggle){
+  topbarToggle.addEventListener("click", () => {
+    const isCollapsed = headerEl.classList.contains("is-collapsed");
+    setTopbarCollapsed(!isCollapsed);
+  });
+}
 
 const toggleCats = document.getElementById("toggleCats");
 const catsDrawer = document.getElementById("catsDrawer");
@@ -120,6 +146,7 @@ function googleMapsDirectionsUrl(p){
 // ===== 6) Side panel + Slider =====
 function openPanel(p, distancePretty){
   if (!sidePanel || !panelContent) return;
+if (window.matchMedia("(max-width: 640px)").matches) setTopbarCollapsed(true);
 
   const imgs = Array.isArray(p.imgs) ? p.imgs : (p.img ? [p.img] : []);
 
@@ -504,3 +531,4 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
