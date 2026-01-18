@@ -383,7 +383,8 @@ function buildLegend(){
 
   // Popola voci legenda con conteggi
   const listEl = document.getElementById("legendList");
-  if (!listEl) {"legendList non trovato: salto popolamento legenda.");
+  if (!listEl) {
+    console.warn("legendList non trovato: salto popolamento legenda.");
                } else {
 
   const counts = {};
@@ -401,7 +402,7 @@ function buildLegend(){
     const item = document.createElement("div");
     item.className = "legend-item";
     item.dataset.cat = cat;
-
+  }
     const iconUrl = (categoryIcons[cat]?.options?.iconUrl) || "icons/default.png";
 
     item.innerHTML = `
@@ -576,5 +577,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
