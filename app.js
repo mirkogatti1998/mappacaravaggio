@@ -827,32 +827,7 @@ async function loadItinerari(){
           layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
         }
 
-        if (g === "LineString" || g === "MultiLineString") {
-          const name =
-            f.properties?.name ||
-            f.properties?.Nome ||
-            f.properties?.title ||
-            "Itinerario";
-
-          const desc =
-            f.properties?.desc ||
-            f.properties?.descrizione ||
-            f.properties?.short ||
-            "";
-
-          // km calcolati dalla geometria
-          const km = getRouteLengthKm(layer);
-
-          layer.bindPopup(`
-            <div class="route-popup">
-              <div class="route-popup-title">${escapeHtml(name)}</div>
-              <div class="route-popup-km">🥾 ${km.toFixed(1)} km</div>
-              ${desc ? `<div class="route-popup-desc">${escapeHtml(desc)}</div>` : ""}
-              <div class="route-popup-hint">Tocca la linea per “seguire” il percorso</div>
-            </div>
-          `);
-
-          // registra la linea e abilita route mode on click
+                // registra la linea e abilita route mode on click
           routePolylines.push(layer);
           layer.on("click", () => applyRouteMode(layer, name, desc));
         }
@@ -932,4 +907,5 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
