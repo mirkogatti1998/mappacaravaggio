@@ -10,101 +10,295 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 }).addTo(map);
 
 // ===== Pane itinerari (sotto ai marker) =====
-// markerPane di Leaflet è ~600 -> mettiamo le routes sotto (350)
 map.createPane("routesPane");
-map.getPane("routesPane").style.zIndex = 350;
+map.getPane("routesPane").style.zIndex = 350; // markerPane è sopra (~600)
 
 // ===== Itinerari (LineString) + Punti pericolosi (Point) =====
 let itinerariLayer = null;
 
-async function loadItinerari(){
-  try{
-    const res = await fetch("itinerari.geojson", { cache: "no-store" });
-    if (!res.ok) throw new Error("Impossibile caricare itinerari.geojson");
-    const geo = await res.json();
+// ===== Modalità percorso =====
+const ROUTE_NEAR_METERS = 180; // POI entro 180m dal percorso restano “normali”
+let routePolylines = [];
+let activeRouteLayer = null;
 
-    if (itinerariLayer) itinerariLayer.remove();
+// ===== Tracking reale (GPS) =====
+let tracking = false;
+let watchId = null;
+let trackStartMs = 0;
+let trackMeters = 0;
+let lastLatLng = null;
+let uiTimer = null;
 
-    itinerariLayer = L.geoJSON(geo, {
-      pane: "routesPane",
+let exitRouteCtrl = null;
+let routeInfoCtrl = null;
+let trackCtrl = null;
 
-      // stile linee (colori diversi stabili per nome itinerario)
-      style: (f) => {
-        const t = f.geometry?.type;
-        if (t !== "LineString" && t !== "MultiLineString") return null;
-
-        const name = String(
-          f.properties?.name || f.properties?.Nome || f.properties?.title || "Itinerario"
-        );
-
-        const palette = ["#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E", "#9B8CFF", "#FFB020"];
-
-        let h = 0;
-        for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
-        const color = palette[h % palette.length];
-
-        return { color, weight: 5, opacity: 0.9 };
-      },
-
-      // punti pericolosi come cerchi rossi
-      pointToLayer: (f, latlng) => {
-        return L.circleMarker(latlng, {
-          pane: "routesPane",
-          radius: 7,
-          color: "#ff3b30",
-          fillColor: "#ff3b30",
-          fillOpacity: 0.9,
-          weight: 2
-        });
-      },
-
-      onEachFeature: (f, layer) => {
-        const g = f.geometry?.type;
-
-        if (g === "Point") {
-          const name =
-            f.properties?.name ||
-            f.properties?.Nome ||
-            f.properties?.title ||
-            "Punto pericoloso";
-          layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
-        }
-
-        if (g === "LineString" || g === "MultiLineString") {
-          const name =
-            f.properties?.name ||
-            f.properties?.Nome ||
-            f.properties?.title ||
-            "Itinerario";
-         const km = lineKmFromLayer(layer);
-const desc = f.properties?.desc || f.properties?.descrizione || "";
-
-layer.bindPopup(
-  `<strong>${escapeHtml(name)}</strong><br>🥾 ${km.toFixed(1)} km` +
-  (desc ? `<br><span style="opacity:.85">${escapeHtml(desc)}</span>` : "")
-);
-
-        }
-      }
-    }).addTo(map);
-
-  } catch(err){
-    console.warn(err);
-  }
+function formatHMS(ms){
+  const total = Math.floor(ms / 1000);
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  return (h ? `${h}:` : "") + String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
 }
-function lineKmFromLayer(layer){
-  const parts = layer.getLatLngs();
-  const segs = Array.isArray(parts[0]) ? parts : [parts];
+
+function getRouteLengthKm(layer){
+  const latlngs = layer.getLatLngs();
+  const segs = Array.isArray(latlngs[0]) ? latlngs : [latlngs];
+
   let meters = 0;
   for (const seg of segs){
     for (let i = 1; i < seg.length; i++){
-      meters += map.distance(seg[i-1], seg[i]);
+      meters += seg[i-1].distanceTo(seg[i]);
     }
   }
   return meters / 1000;
 }
 
-loadItinerari();
+function estimateTimeMinutes(km, speedKmh){
+  return Math.round((km / speedKmh) * 60);
+}
+
+function ensureExitRouteBtn(){
+  if (exitRouteCtrl) return;
+
+  exitRouteCtrl = L.control({ position: "topright" });
+  exitRouteCtrl.onAdd = () => {
+    const div = L.DomUtil.create("div", "route-exit");
+    div.innerHTML = `<button type="button" class="route-exit-btn">Esci percorso</button>`;
+    L.DomEvent.disableClickPropagation(div);
+    div.querySelector("button").addEventListener("click", clearRouteMode);
+    return div;
+  };
+  exitRouteCtrl.addTo(map);
+}
+
+function showExitRouteBtn(show){
+  ensureExitRouteBtn();
+  const el = document.querySelector(".route-exit");
+  if (el) el.style.display = show ? "" : "none";
+}
+
+function ensureRouteInfoUI(){
+  if (routeInfoCtrl) return;
+
+  routeInfoCtrl = L.control({ position: "topright" });
+  routeInfoCtrl.onAdd = () => {
+    const div = L.DomUtil.create("div", "route-info");
+    L.DomEvent.disableClickPropagation(div);
+    return div;
+  };
+  routeInfoCtrl.addTo(map);
+}
+
+function showRouteInfo(show, html = ""){
+  ensureRouteInfoUI();
+  const el = document.querySelector(".route-info");
+  if (!el) return;
+  el.style.display = show ? "" : "none";
+  if (show) el.innerHTML = html;
+}
+
+function ensureTrackUI(){
+  if (trackCtrl) return;
+
+  trackCtrl = L.control({ position: "bottomleft" });
+  trackCtrl.onAdd = () => {
+    const div = L.DomUtil.create("div", "track-box");
+    div.innerHTML = `
+      <div class="track-row">
+        <strong>Tracciamento</strong>
+        <button type="button" class="track-btn" data-act="toggle">Start</button>
+      </div>
+      <div class="track-metrics">
+        ⏱ <span data-t="time">00:00</span>
+        <span class="track-sep">•</span>
+        📏 <span data-t="dist">0.00</span> km
+      </div>
+    `;
+    L.DomEvent.disableClickPropagation(div);
+
+    div.querySelector('[data-act="toggle"]').addEventListener("click", () => {
+      tracking ? stopTracking() : startTracking();
+    });
+
+    return div;
+  };
+  trackCtrl.addTo(map);
+}
+
+function showTrackUI(show){
+  ensureTrackUI();
+  const el = document.querySelector(".track-box");
+  if (el) el.style.display = show ? "" : "none";
+}
+
+function updateTrackUI(){
+  const box = document.querySelector(".track-box");
+  if (!box) return;
+
+  const tEl = box.querySelector('[data-t="time"]');
+  const dEl = box.querySelector('[data-t="dist"]');
+  const btn = box.querySelector('[data-act="toggle"]');
+
+  const now = Date.now();
+  const elapsed = tracking ? now - trackStartMs : 0;
+
+  if (tEl) tEl.textContent = tracking ? formatHMS(elapsed) : "00:00";
+  if (dEl) dEl.textContent = (trackMeters/1000).toFixed(2);
+  if (btn) btn.textContent = tracking ? "Stop" : "Start";
+}
+
+function startTracking(){
+  if (!("geolocation" in navigator)){
+    alert("Geolocalizzazione non supportata dal browser.");
+    return;
+  }
+
+  tracking = true;
+  trackStartMs = Date.now();
+  trackMeters = 0;
+  lastLatLng = null;
+
+  if (uiTimer) clearInterval(uiTimer);
+  uiTimer = setInterval(updateTrackUI, 1000);
+
+  watchId = navigator.geolocation.watchPosition(
+    (pos) => {
+      const { latitude, longitude, accuracy } = pos.coords;
+      const cur = L.latLng(latitude, longitude);
+
+      // filtro: ignora GPS troppo impreciso
+      if (accuracy && accuracy > 35) return;
+
+      if (lastLatLng){
+        const d = lastLatLng.distanceTo(cur);
+
+        // ignora jitter sotto 10m
+        if (d >= 10) trackMeters += d;
+      }
+
+      lastLatLng = cur;
+      updateTrackUI();
+    },
+    () => {
+      stopTracking();
+      alert("Posizione non disponibile (permesso negato o segnale debole).");
+    },
+    { enableHighAccuracy: true, maximumAge: 1500, timeout: 12000 }
+  );
+
+  updateTrackUI();
+}
+
+function stopTracking(){
+  tracking = false;
+
+  if (watchId !== null){
+    navigator.geolocation.clearWatch(watchId);
+    watchId = null;
+  }
+  if (uiTimer){
+    clearInterval(uiTimer);
+    uiTimer = null;
+  }
+
+  updateTrackUI();
+}
+
+// distanza punto -> polilinea (metri) in WebMercator
+function pointToPolylineMeters(polyLayer, latlng){
+  const latlngs = polyLayer.getLatLngs();
+  const segs = Array.isArray(latlngs[0]) ? latlngs : [latlngs];
+
+  const crs = map.options.crs;
+  const p = crs.project(latlng);
+
+  function distPointToSeg(p, a, b){
+    const vx = b.x - a.x, vy = b.y - a.y;
+    const wx = p.x - a.x, wy = p.y - a.y;
+
+    const c1 = vx * wx + vy * wy;
+    if (c1 <= 0) return Math.hypot(p.x - a.x, p.y - a.y);
+
+    const c2 = vx * vx + vy * vy;
+    if (c2 <= c1) return Math.hypot(p.x - b.x, p.y - b.y);
+
+    const t = c1 / c2;
+    const px = a.x + t * vx;
+    const py = a.y + t * vy;
+    return Math.hypot(p.x - px, p.y - py);
+  }
+
+  let best = Infinity;
+  for (const seg of segs){
+    for (let i = 1; i < seg.length; i++){
+      const a = crs.project(seg[i-1]);
+      const b = crs.project(seg[i]);
+      best = Math.min(best, distPointToSeg(p, a, b));
+    }
+  }
+  return best;
+}
+
+function applyRouteMode(routeLayer, routeName = "", routeDesc = ""){
+  activeRouteLayer = routeLayer;
+
+  // evidenzia percorso attivo, spegne gli altri
+  routePolylines.forEach(l => {
+    if (l === activeRouteLayer) l.setStyle({ weight: 7, opacity: 1 });
+    else l.setStyle({ weight: 4, opacity: 0.18 });
+  });
+
+  // zoom sul percorso
+  try { map.fitBounds(activeRouteLayer.getBounds(), { padding: [30, 30] }); } catch {}
+
+  // POI: tutti attenuati, ma quelli vicini restano normali
+  markers.forEach(m => {
+    const p = m.__poi;
+    if (!p) return;
+    const d = pointToPolylineMeters(activeRouteLayer, L.latLng(p.lat, p.lon));
+    const near = d <= ROUTE_NEAR_METERS;
+    m.setOpacity(near ? 1 : 0.28);
+  });
+
+  // box info percorso (km + minuti stimati)
+  const km = getRouteLengthKm(activeRouteLayer);
+  const walkMin = estimateTimeMinutes(km, 4.5);
+  const bikeMin = estimateTimeMinutes(km, 15);
+
+  const html = `
+    <div class="route-info-title">${escapeHtml(routeName || "Percorso")}</div>
+    <div class="route-info-row">📏 <strong>${km.toFixed(1)} km</strong></div>
+    <div class="route-info-row">🚶 ${walkMin} min &nbsp; <span class="route-info-muted">•</span> &nbsp; 🚴 ${bikeMin} min</div>
+    ${routeDesc ? `<div class="route-info-desc">${escapeHtml(routeDesc)}</div>` : ""}
+  `;
+  showRouteInfo(true, html);
+
+  // bottoni
+  showExitRouteBtn(true);
+
+  // tracking box (start/stop manuale)
+  showTrackUI(true);
+  updateTrackUI();
+}
+
+function clearRouteMode(){
+  activeRouteLayer = null;
+
+  // reset stile itinerari
+  routePolylines.forEach(l => l.setStyle({ weight: 5, opacity: 0.9 }));
+
+  // reset POI
+  markers.forEach(m => m.setOpacity(1));
+
+  // nascondi box
+  showExitRouteBtn(false);
+  showRouteInfo(false);
+  showTrackUI(false);
+
+  // stop tracking se attivo
+  stopTracking();
+}
 
 // ===== 2) Stato =====
 let allPois = [];
@@ -243,7 +437,6 @@ function googleMapsDirectionsUrl(p){
 function openPanel(p, distancePretty){
   if (!sidePanel || !panelContent) return;
 
-  // su mobile chiudi topbar quando apri dettagli
   if (window.matchMedia("(max-width: 640px)").matches) setTopbarCollapsed(true);
 
   const imgs = Array.isArray(p.imgs) ? p.imgs : (p.img ? [p.img] : []);
@@ -290,7 +483,6 @@ function openPanel(p, distancePretty){
   `;
 
   sidePanel.classList.remove("hidden");
-
   setupSliderAndLightbox(imgs, p.name);
 }
 
@@ -347,9 +539,7 @@ function setupSliderAndLightbox(imgs, title){
     scrollToIndex(Math.min(imgs.length - 1, i + 1));
   });
 
-  dots.forEach(d => {
-    d.addEventListener("click", () => scrollToIndex(Number(d.dataset.dot)));
-  });
+  dots.forEach(d => d.addEventListener("click", () => scrollToIndex(Number(d.dataset.dot))));
 
   slider.querySelectorAll("[data-open-lightbox]").forEach(imgEl => {
     imgEl.style.cursor = "zoom-in";
@@ -407,13 +597,27 @@ function renderMarkers({ shouldZoom = false } = {}) {
 
     const m = L.marker([p.lat, p.lon], { icon }).addTo(map);
 
-    // NIENTE popup bianco: click = solo pannello
+    // salva POI nel marker (serve per modalità percorso)
+    m.__poi = p;
+
+    // click = pannello
     m.on("click", () => openPanel(p, pretty));
 
     markers.push(m);
   });
 
   if (shouldZoom) zoomToVisibleMarkers();
+
+  // se sei in modalità percorso e cambi filtri: riapplica opacità coerente
+  if (activeRouteLayer){
+    markers.forEach(m => {
+      const p = m.__poi;
+      if (!p) return;
+      const d = pointToPolylineMeters(activeRouteLayer, L.latLng(p.lat, p.lon));
+      const near = d <= ROUTE_NEAR_METERS;
+      m.setOpacity(near ? 1 : 0.28);
+    });
+  }
 }
 
 // ===== 8) Categorie + legenda (drawer) =====
@@ -522,6 +726,7 @@ function resetAll(){
   if (categoryFilter) categoryFilter.value = "all";
   if (searchInput) searchInput.value = "";
   closeSidePanel();
+  clearRouteMode();
   map.setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom, { animate: true });
   renderMarkers();
   updateLegendActiveState();
@@ -553,9 +758,111 @@ async function init() {
       updateLegendActiveState();
     });
   }
+
+  // carica itinerari dopo tutto
+  loadItinerari();
 }
 
 init();
+
+// ===== Carica Itinerari =====
+async function loadItinerari(){
+  try{
+    const res = await fetch("itinerari.geojson", { cache: "no-store" });
+    if (!res.ok) throw new Error("Impossibile caricare itinerari.geojson");
+    const geo = await res.json();
+
+    if (itinerariLayer) itinerariLayer.remove();
+
+    // reset route mode storage
+    routePolylines = [];
+    activeRouteLayer = null;
+    showExitRouteBtn(false);
+    showRouteInfo(false);
+    showTrackUI(false);
+    stopTracking();
+
+    itinerariLayer = L.geoJSON(geo, {
+      pane: "routesPane",
+
+      // stile linee (colori stabili per nome)
+      style: (f) => {
+        const t = f.geometry?.type;
+        if (t !== "LineString" && t !== "MultiLineString") return null;
+
+        const name = String(
+          f.properties?.name || f.properties?.Nome || f.properties?.title || "Itinerario"
+        );
+
+        const palette = ["#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E", "#9B8CFF", "#FFB020"];
+
+        let h = 0;
+        for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+        const color = palette[h % palette.length];
+
+        return { color, weight: 5, opacity: 0.9 };
+      },
+
+      // punti pericolosi come cerchi rossi (sotto ai marker)
+      pointToLayer: (f, latlng) => {
+        return L.circleMarker(latlng, {
+          pane: "routesPane",
+          radius: 7,
+          color: "#ff3b30",
+          fillColor: "#ff3b30",
+          fillOpacity: 0.9,
+          weight: 2
+        });
+      },
+
+      onEachFeature: (f, layer) => {
+        const g = f.geometry?.type;
+
+        if (g === "Point") {
+          const name =
+            f.properties?.name ||
+            f.properties?.Nome ||
+            f.properties?.title ||
+            "Punto pericoloso";
+          layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
+        }
+
+        if (g === "LineString" || g === "MultiLineString") {
+          const name =
+            f.properties?.name ||
+            f.properties?.Nome ||
+            f.properties?.title ||
+            "Itinerario";
+
+          const desc =
+            f.properties?.desc ||
+            f.properties?.descrizione ||
+            f.properties?.short ||
+            "";
+
+          // km calcolati dalla geometria
+          const km = getRouteLengthKm(layer);
+
+          layer.bindPopup(`
+            <div class="route-popup">
+              <div class="route-popup-title">${escapeHtml(name)}</div>
+              <div class="route-popup-km">🥾 ${km.toFixed(1)} km</div>
+              ${desc ? `<div class="route-popup-desc">${escapeHtml(desc)}</div>` : ""}
+              <div class="route-popup-hint">Tocca la linea per “seguire” il percorso</div>
+            </div>
+          `);
+
+          // registra la linea e abilita route mode on click
+          routePolylines.push(layer);
+          layer.on("click", () => applyRouteMode(layer, name, desc));
+        }
+      }
+    }).addTo(map);
+
+  } catch(err){
+    console.warn(err);
+  }
+}
 
 // ===== Lightbox (fullscreen) =====
 const lightbox = document.getElementById("lightbox");
@@ -625,4 +932,3 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
-
