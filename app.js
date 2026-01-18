@@ -383,7 +383,8 @@ function buildLegend(){
 
   // Popola voci legenda con conteggi
   const listEl = document.getElementById("legendList");
-  if (!listEl) return;
+  if (!listEl) {"legendList non trovato: salto popolamento legenda.");
+               } else {
 
   const counts = {};
   allPois.forEach(p => {
@@ -575,4 +576,5 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
