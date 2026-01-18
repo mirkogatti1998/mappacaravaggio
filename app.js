@@ -106,6 +106,17 @@ function getPrettyDistance(p){
   return meters < 1000 ? `${Math.round(meters)} m` : `${(meters / 1000).toFixed(1)} km`;
 }
 
+// URL indicazioni Google Maps (se ho posizione: origine=io, altrimenti apre destinazione)
+function googleMapsDirectionsUrl(p){
+  if (!p) return "#";
+  const dest = `${p.lat},${p.lon}`;
+  if (userLatLng) {
+    const orig = `${userLatLng.lat},${userLatLng.lng}`;
+    return `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(orig)}&destination=${encodeURIComponent(dest)}&travelmode=walking`;
+  }
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(dest)}`;
+}
+
 // ===== 6) Side panel + Slider =====
 function openPanel(p, distancePretty){
   if (!sidePanel || !panelContent) return;
@@ -133,11 +144,18 @@ function openPanel(p, distancePretty){
     `
     : "";
 
+  // bottone indicazioni sempre presente
+  const directionsUrl = googleMapsDirectionsUrl(p);
+
   panelContent.innerHTML = `
     <div class="panel-title">${escapeHtml(p.name)}</div>
     <div class="badge">${escapeHtml(p.category)}</div>
 
     ${sliderHtml}
+
+    <div class="panel-actions">
+      <a class="btn-primary" href="${directionsUrl}" target="_blank" rel="noopener">Apri Google Maps</a>
+    </div>
 
     <div class="panel-text">${escapeHtml(p.long || p.short || "")}</div>
 
@@ -149,7 +167,7 @@ function openPanel(p, distancePretty){
 
   sidePanel.classList.remove("hidden");
 
-  // Attacca behavior slider + lightbox
+  // slider + lightbox
   setupSliderAndLightbox(imgs, p.name);
 }
 
@@ -264,39 +282,12 @@ function renderMarkers({ shouldZoom = false } = {}) {
 
   filtered.forEach(p => {
     const pretty = getPrettyDistance(p);
-
-    const popupHtml = `
-      <div class="popup-title">${escapeHtml(p.name)}</div>
-      <div class="popup-badge">${escapeHtml(p.category || "")}</div>
-      ${p.short ? `<p class="popup-text">${escapeHtml(truncate(p.short, 240))}</p>` : ""}
-      <div class="popup-meta">
-        ${pretty ? `<strong>Distanza:</strong> ${pretty}` : `Premi “Dove sono io?” per vedere la distanza.`}
-      </div>
-      <div class="popup-actions">
-        <a href="#" class="popup-btn primary" data-open="1">Dettagli</a>
-        ${p.links?.[0]?.url ? `<a href="${p.links[0].url}" target="_blank" rel="noopener" class="popup-btn">Google Maps</a>` : ""}
-      </div>
-    `;
-
     const icon = categoryIcons[p.category] || defaultIcon;
 
     const m = L.marker([p.lat, p.lon], { icon }).addTo(map);
-    m.bindPopup(popupHtml);
 
-    // click marker -> pannello
+    // IMPORTANTISSIMO: niente popup bianco. Click = solo pannello.
     m.on("click", () => openPanel(p, pretty));
-
-    // Bottone "Dettagli" dentro popup
-    m.on("popupopen", (e) => {
-      const el = e.popup.getElement();
-      const btn = el ? el.querySelector('[data-open="1"]') : null;
-      if (btn) {
-        btn.addEventListener("click", (ev) => {
-          ev.preventDefault();
-          openPanel(p, pretty);
-        }, { once: true });
-      }
-    });
 
     markers.push(m);
   });
@@ -336,7 +327,6 @@ function buildLegend(){
 
   const cats = Object.keys(counts).sort((a,b) => a.localeCompare(b, "it"));
 
-  // evita che scroll/click del drawer influenzino la mappa
   L.DomEvent.disableClickPropagation(legendEl);
   L.DomEvent.disableScrollPropagation(legendEl);
 
@@ -358,7 +348,6 @@ function buildLegend(){
       <div class="legend-count">${counts[cat] || 0}</div>
     `;
 
-    // click: seleziona (toggle) e chiude drawer
     row.addEventListener("click", () => {
       if (categoryFilter && categoryFilter.value === cat) categoryFilter.value = "all";
       else if (categoryFilter) categoryFilter.value = cat;
