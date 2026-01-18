@@ -28,6 +28,8 @@
         </select>
       </label>
 
+      <button id="toggleCats" class="ghost-btn" type="button">Categorie</button>
+      
       <label class="field">
         <span>Cerca</span>
         <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." />
@@ -75,5 +77,13 @@
     <img id="lbImg" src="" alt="">
   </div>
 </div>
+ <div id="catsDrawer" class="cats-drawer hidden" aria-hidden="true">
+  <div class="cats-drawer-head">
+    <strong>Categorie</strong>
+    <button id="closeCats" class="close-btn" type="button">✕</button>
+  </div>
+  <div id="legend" class="legend"></div>
+</div> 
 </body>
 </html>
+
