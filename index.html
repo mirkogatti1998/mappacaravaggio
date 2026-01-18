@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mappa di Caravaggio</title>
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <script defer src="app.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Mappa di Caravaggio</h1>
+      <p>Esplora il borgo e dintorni</p>
+    </div>
+
+    <div class="controls">
+      <label class="field">
+        <span>Categoria</span>
+        <select id="categoryFilter">
+          <option value="all">Tutte</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Cerca</span>
+        <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." />
+      </label>
+
+      <div class="actions">
+        <button id="locateBtn" class="btn-primary" type="button">Dove sono io?</button>
+        <button id="resetBtn" class="btn-ghost" type="button" title="Azzera filtri">Reset</button>
+      </div>
+
+      <div class="meta">
+        <span id="resultsCount" class="pill" aria-live="polite">0 risultati</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <div id="map"></div>
+
+    <aside id="sidePanel" class="side-panel hidden" aria-label="Dettagli punto di interesse">
+      <div class="panel-head">
+        <button id="closePanel" class="btn-ghost" type="button">✕</button>
+      </div>
+      <div id="panelContent"></div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-title">Crediti</div>
+      <div class="footer-text">
+        Icone mappa: Map Icons Collection — Licenza CC BY-SA 3.0
+        <span class="sep">•</span>
+        Fonte cartografica: OpenStreetMap contributors
+      </div>
+    </div>
+  </footer>
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+  <div class="frame" role="dialog" aria-modal="true">
+    <button id="lbClose" class="close" type="button" aria-label="Chiudi">✕</button>
+    <button id="lbPrev" class="nav prev" type="button" aria-label="Foto precedente">‹</button>
+    <button id="lbNext" class="nav next" type="button" aria-label="Foto successiva">›</button>
+
+    <div id="lbCounter" class="counter"></div>
+    <img id="lbImg" src="" alt="">
+  </div>
+</div>
+</body>
+</html>
