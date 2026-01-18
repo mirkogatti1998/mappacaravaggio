@@ -110,39 +110,49 @@ function getPrettyDistance(p){
 function openPanel(p, distancePretty){
   if (!sidePanel || !panelContent) return;
 
-  const imgs = Array.isArray(p.imgs) ? p.imgs : [];
-  const firstImg = imgs[0];
+  const imgs = Array.isArray(p.imgs) ? p.imgs : (p.img ? [p.img] : []);
 
-  const imgHtml = firstImg
-    ? `<img class="panel-img" src="${firstImg}" alt="${p.name}">`
+  const sliderHtml = imgs.length
+    ? `
+      <div class="slider" data-slider>
+        <button class="slider-btn prev" type="button" aria-label="Foto precedente">‹</button>
+        <button class="slider-btn next" type="button" aria-label="Foto successiva">›</button>
+
+        <div class="slider-track" data-track>
+          ${imgs.map((src, i) => `
+            <div class="slide">
+              <img src="${src}" alt="${escapeHtml(p.name)} (${i+1})" data-open-lightbox="${i}">
+            </div>
+          `).join("")}
+        </div>
+
+        <div class="slider-dots" data-dots>
+          ${imgs.map((_, i) => `<span class="slider-dot ${i===0 ? "active": ""}" data-dot="${i}"></span>`).join("")}
+        </div>
+      </div>
+    `
     : "";
 
-  const gmaps = googleMapsDirectionsUrl(p);
-
   panelContent.innerHTML = `
-    <div class="panel-title">${p.name}</div>
-    <div class="badge">${p.category}</div>
+    <div class="panel-title">${escapeHtml(p.name)}</div>
+    <div class="badge">${escapeHtml(p.category)}</div>
 
-    ${imgHtml}
+    ${sliderHtml}
 
-    <div class="panel-actions">
-      <button id="btnBringHere" class="btn-primary" type="button">Zomma</button>
-      <a class="btn-ghost" href="${gmaps}" target="_blank" rel="noopener">Apri in Google Maps</a>
-    </div>
-
-    <div class="panel-text">${p.long || p.short || ""}</div>
+    <div class="panel-text">${escapeHtml(p.long || p.short || "")}</div>
 
     <div class="panel-meta">
-      ${distancePretty ? `📍 Distanza: <strong>${distancePretty}</strong><br>` : ""}
-      Lat: ${p.lat.toFixed(6)} · Lon: ${p.lon.toFixed(6)}
+      ${distancePretty ? `📍 Distanza: <strong>${escapeHtml(distancePretty)}</strong><br>` : ""}
+      Lat: ${Number(p.lat).toFixed(6)} · Lon: ${Number(p.lon).toFixed(6)}
     </div>
   `;
 
   sidePanel.classList.remove("hidden");
 
-  const btn = document.getElementById("btnBringHere");
-  if (btn) btn.addEventListener("click", () => bringMeThere(p));
+  // Attacca behavior slider + lightbox
+  setupSliderAndLightbox(p, imgs);
 }
+
 
 function buildSliderHtml(imgs, altBase){
   const slides = imgs.map((src, i) => `
@@ -605,6 +615,120 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+function setupSliderAndLightbox(p, imgs){
+  const slider = panelContent.querySelector("[data-slider]");
+  if (!slider || !imgs || imgs.length === 0) return;
+
+  const track = slider.querySelector("[data-track]");
+  const dotsWrap = slider.querySelector("[data-dots]");
+  const btnPrev = slider.querySelector(".slider-btn.prev");
+  const btnNext = slider.querySelector(".slider-btn.next");
+
+  const dots = Array.from(dotsWrap.querySelectorAll("[data-dot]"));
+
+  function setActiveDot(i){
+    dots.forEach((d, idx) => d.classList.toggle("active", idx === i));
+  }
+
+  function scrollToIndex(i){
+    const w = track.clientWidth;
+    track.scrollTo({ left: i * (w + 10), behavior: "smooth" });
+    setActiveDot(i);
+  }
+
+  // update dot on scroll (semplice ma efficace)
+  track.addEventListener("scroll", () => {
+    const w = track.clientWidth;
+    const i = Math.round(track.scrollLeft / (w + 10));
+    setActiveDot(Math.max(0, Math.min(i, imgs.length - 1)));
+  }, { passive: true });
+
+  // frecce
+  if (btnPrev) btnPrev.addEventListener("click", () => {
+    const w = track.clientWidth;
+    const i = Math.round(track.scrollLeft / (w + 10));
+    scrollToIndex(Math.max(0, i - 1));
+  });
+
+  if (btnNext) btnNext.addEventListener("click", () => {
+    const w = track.clientWidth;
+    const i = Math.round(track.scrollLeft / (w + 10));
+    scrollToIndex(Math.min(imgs.length - 1, i + 1));
+  });
+
+  // click sui pallini
+  dots.forEach(d => {
+    d.addEventListener("click", () => {
+      scrollToIndex(Number(d.dataset.dot));
+    });
+  });
+
+  // click immagine => lightbox
+  slider.querySelectorAll("[data-open-lightbox]").forEach(imgEl => {
+    imgEl.addEventListener("click", () => {
+      const i = Number(imgEl.dataset.openLightbox);
+      openLightbox(imgs, i, p.name);
+    });
+  });
+}
+
+/* ===== Lightbox =====
+   Se ce l’hai già, NON duplicare: dimmelo e lo adattiamo. */
+function openLightbox(imgs, startIndex = 0, title = ""){
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  const lbCounter = document.getElementById("lbCounter");
+  const btnClose = document.getElementById("lbClose");
+  const btnPrev = document.getElementById("lbPrev");
+  const btnNext = document.getElementById("lbNext");
+
+  if (!lb || !lbImg) return;
+
+  let idx = startIndex;
+
+  function render(){
+    lbImg.src = imgs[idx];
+    lbImg.alt = title ? `${title} (${idx+1}/${imgs.length})` : `Foto ${idx+1}`;
+    if (lbCounter) lbCounter.textContent = `${idx+1}/${imgs.length}`;
+  }
+
+  function show(){
+    lb.classList.remove("hidden");
+    lb.setAttribute("aria-hidden", "false");
+    render();
+  }
+
+  function hide(){
+    lb.classList.add("hidden");
+    lb.setAttribute("aria-hidden", "true");
+  }
+
+  function prev(){ idx = (idx - 1 + imgs.length) % imgs.length; render(); }
+  function next(){ idx = (idx + 1) % imgs.length; render(); }
+
+  btnClose && (btnClose.onclick = hide);
+  btnPrev && (btnPrev.onclick = prev);
+  btnNext && (btnNext.onclick = next);
+
+  // click fuori dall’immagine chiude
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb) hide();
+  }, { once: true });
+
+  // tasti
+  document.addEventListener("keydown", function onKey(e){
+    if (lb.classList.contains("hidden")) {
+      document.removeEventListener("keydown", onKey);
+      return;
+    }
+    if (e.key === "Escape") hide();
+    if (e.key === "ArrowLeft") prev();
+    if (e.key === "ArrowRight") next();
+  });
+
+  show();
+}
+
 
 
 
