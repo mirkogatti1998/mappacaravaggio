@@ -581,4 +581,21 @@ body{
   color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+.panel-actions{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+
+.panel-actions .btn-primary,
+.panel-actions .btn-ghost{
+  padding:10px 12px;
+  border-radius:12px;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+
 
