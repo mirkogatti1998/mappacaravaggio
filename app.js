@@ -9,6 +9,71 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
+// ===== Itinerari (LineString) + Punti pericolosi (Point) =====
+let itinerariLayer = null;
+
+async function loadItinerari(){
+  try{
+    const res = await fetch("itinerari.geojson", { cache: "no-store" });
+    if (!res.ok) throw new Error("Impossibile caricare itinerari.geojson");
+    const geo = await res.json();
+
+    // se lo ricarichi, pulisci
+    if (itinerariLayer) itinerariLayer.remove();
+
+    itinerariLayer = L.geoJSON(geo, {
+      // stile linee
+      style: (f) => {
+        if (f.geometry && (f.geometry.type === "LineString" || f.geometry.type === "MultiLineString")){
+          return {
+            color: "#C8A15A",
+            weight: 5,
+            opacity: 0.9
+          };
+        }
+        return null;
+      },
+
+      // punti (pericoli) come cerchi rossi
+      pointToLayer: (f, latlng) => {
+        return L.circleMarker(latlng, {
+          radius: 7,
+          color: "#ff3b30",
+          fillColor: "#ff3b30",
+          fillOpacity: 0.9,
+          weight: 2
+        });
+      },
+
+      onEachFeature: (f, layer) => {
+        const g = f.geometry?.type;
+        if (g === "Point") {
+          const name =
+            f.properties?.name ||
+            f.properties?.Nome ||
+            f.properties?.title ||
+            "Punto pericoloso";
+          layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
+        }
+        if (g === "LineString" || g === "MultiLineString") {
+          const name =
+            f.properties?.name ||
+            f.properties?.Nome ||
+            f.properties?.title ||
+            "Itinerario";
+          layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
+        }
+      }
+    }).addTo(map);
+
+  } catch(err){
+    console.warn(err);
+  }
+}
+
+loadItinerari();
+
+
 // ===== 2) Stato =====
 let allPois = [];
 let markers = [];
@@ -531,4 +596,5 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
