@@ -818,6 +818,7 @@ async function loadItinerari(){
      onEachFeature: (f, layer) => {
   const g = f.geometry?.type;
 
+  // --- PUNTI PERICOLOSI ---
   if (g === "Point") {
     const name =
       f.properties?.name ||
@@ -828,6 +829,7 @@ async function loadItinerari(){
     layer.bindPopup(`<strong>${escapeHtml(name)}</strong>`);
   }
 
+  // --- ITINERARI (LINEE) ---
   if (g === "LineString" || g === "MultiLineString") {
     const name =
       f.properties?.name ||
@@ -838,14 +840,17 @@ async function loadItinerari(){
     const desc =
       f.properties?.desc ||
       f.properties?.descrizione ||
+      f.properties?.short ||
       "";
 
-    layer.bindPopup(`
-      <strong>${escapeHtml(name)}</strong><br>
-      <small>${escapeHtml(desc)}</small>
-    `);
+    // registra la linea per la modalità percorso
+    routePolylines.push(layer);
+
+    // click = modalità "segui percorso"
+    layer.on("click", () => applyRouteMode(layer, name, desc));
   }
 }
+
 
     }).addTo(map);
 
@@ -922,6 +927,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
