@@ -932,3 +932,153 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+/* =========================================================
+   ROUTE MODE UI (itinerari): Exit + Info + Tracking + Popup
+   (da incollare in fondo al tuo styles.css)
+========================================================= */
+
+/* Box “Esci percorso” (Leaflet control) */
+.route-exit{
+  background: rgba(34,26,21,.92);
+  border: 1px solid rgba(242,233,220,.18);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(8px);
+  margin-top: 10px;
+}
+
+.route-exit-btn{
+  width: 100%;
+  border: 1px solid rgba(242,233,220,.18);
+  background: rgba(15,13,11,.45);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 650;
+  letter-spacing: .2px;
+}
+.route-exit-btn:hover{ filter: brightness(1.07); }
+.route-exit-btn:active{ transform: translateY(1px); }
+
+/* Box info percorso (Leaflet control) */
+.route-info{
+  margin-top: 10px;
+  background: rgba(34,26,21,.92);
+  border: 1px solid rgba(242,233,220,.18);
+  border-radius: 14px;
+  padding: 10px 12px;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(8px);
+  min-width: 220px;
+  max-width: min(320px, 86vw);
+}
+
+.route-info-title{
+  font-weight: 800;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.route-info-row{
+  font-size: 12.5px;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+.route-info-muted{
+  opacity: .65;
+}
+
+.route-info-desc{
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(242,233,220,.86);
+  line-height: 1.35;
+  border-top: 1px solid rgba(242,233,220,.10);
+  padding-top: 8px;
+}
+
+/* Box tracking (Leaflet control) */
+.track-box{
+  background: rgba(34,26,21,.92);
+  border: 1px solid rgba(242,233,220,.18);
+  border-radius: 14px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-size: 13px;
+  box-shadow: var(--shadow2);
+  backdrop-filter: blur(8px);
+  min-width: 220px;
+  max-width: min(320px, 86vw);
+}
+
+.track-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom: 6px;
+}
+
+.track-btn{
+  border: 1px solid rgba(242,233,220,.18);
+  background: rgba(15,13,11,.45);
+  color: var(--text);
+  padding: 7px 10px;
+  border-radius: 12px;
+  cursor:pointer;
+  font-weight: 650;
+}
+.track-btn:hover{ filter: brightness(1.07); }
+.track-btn:active{ transform: translateY(1px); }
+
+.track-metrics{
+  opacity: .95;
+  font-size: 12.5px;
+}
+
+.track-sep{
+  margin: 0 8px;
+  opacity: .65;
+}
+
+/* Popup itinerari (quando tocchi una linea) */
+.route-popup{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.route-popup-title{
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.route-popup-km{
+  font-size: 12.5px;
+  margin-bottom: 6px;
+  color: rgba(0,0,0,.78);
+}
+
+.route-popup-desc{
+  font-size: 12px;
+  color: rgba(0,0,0,.68);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.route-popup-hint{
+  font-size: 11px;
+  color: rgba(0,0,0,.55);
+  border-top: 1px solid rgba(0,0,0,.10);
+  padding-top: 8px;
+}
+
+/* Mobile: evita che i box coprano troppo */
+@media (max-width: 640px){
+  .route-info, .track-box{
+    max-width: 86vw;
+  }
+}
+
