@@ -29,6 +29,20 @@ body{
   padding: 14px 16px;
   background: linear-gradient(180deg, rgba(34,26,21,.96), rgba(34,26,21,.86));
   border-bottom: 1px solid var(--border);
+
+  /* (3) shadow morbida + look “app” */
+  position: relative;
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+
+/* (2) un filo di aria/gradiente verso la mappa */
+.topbar::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:-1px;
+  height: 18px;
+  pointer-events:none;
+  background: linear-gradient(180deg, rgba(34,26,21,0.0), rgba(0,0,0,0.14));
 }
 
 .brand h1{
@@ -113,6 +127,24 @@ body{
   font-size: 12px;
 }
 
+/* (4) Bottone “Dove sono io?” più iconico */
+#locateBtn{
+  position: relative;
+  padding-left: 36px;
+}
+#locateBtn::before{
+  content: "📍";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: .95;
+}
+#locateBtn:active{
+  transform: translateY(1px);
+}
+
 /* LAYOUT */
 .layout{
   position:relative;
@@ -176,6 +208,15 @@ body{
   margin-top: 12px;
   padding-top: 10px;
   border-top: 1px solid var(--border);
+}
+
+/* (7) Animazione ingresso pannello (classe aggiunta via JS) */
+@keyframes panelIn{
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.side-panel.anim-in{
+  animation: panelIn .18s ease-out;
 }
 
 /* POPUP (Leaflet) */
@@ -263,6 +304,13 @@ body{
 }
 
 .sep{ margin: 0 8px; opacity: .7; }
+
+/* (6) Footer più compatto su mobile */
+@media (max-width: 640px){
+  .footer{ padding: 8px 12px; }
+  .footer-title{ font-size: 11px; }
+  .footer-text{ font-size: 11px; line-height: 1.25; }
+}
 
 /* Drawer categorie */
 .ghost-btn{
@@ -520,6 +568,7 @@ body{
     width: auto;
   }
 }
+
 /* ===== Bottoni azioni nel pannello ===== */
 .panel-actions{
   display:flex;
@@ -534,28 +583,28 @@ body{
   align-items:center;
   justify-content:center;
 }
+
 /* ===== Topbar collassabile (solo mobile) ===== */
-.topbar{ position: relative; }
-
 /* di default nascosto su desktop */
-.topbar-toggle{ display:none; }
+.topbar-toggle{
+  display:none;
+}
 
+/* Mobile: toggle “figo” + rotazione (1) + transizione (7) */
 @media (max-width: 640px){
-
-  /* mostra bottone su mobile */
   .topbar-toggle{
     display: grid;
     place-items: center;
 
     position: absolute;
     right: 12px;
-    top: 12px;
+    top: 14px;
 
-    width: 42px;
-    height: 42px;
+    width: 46px;
+    height: 46px;
     border-radius: 14px;
 
-    border: 1px solid var(--border);
+    border: 1px solid rgba(242,233,220,.18);
     background: rgba(15,13,11,.55);
     color: var(--text);
 
@@ -563,14 +612,28 @@ body{
     font-size: 18px;
     line-height: 1;
 
-    z-index: 9999;
+    z-index: 20;
     -webkit-tap-highlight-color: transparent;
+
+    box-shadow: 0 10px 24px rgba(0,0,0,.30);
+    backdrop-filter: blur(6px);
+
+    transition: transform .18s ease, filter .18s ease, background .18s ease;
+    transform: rotate(0deg);
+  }
+
+  .topbar-toggle:hover{ filter: brightness(1.08); }
+  .topbar-toggle:active{ transform: translateY(1px) scale(.98); }
+
+  /* freccia ruota quando collassi */
+  .topbar.is-collapsed .topbar-toggle{
+    transform: rotate(180deg);
   }
 
   /* animazione collasso controlli */
   .topbar .controls{
     overflow: hidden;
-    transition: max-height .22s ease, opacity .18s ease, margin-top .18s ease;
+    transition: max-height .25s ease, opacity .18s ease, margin-top .18s ease;
     max-height: 520px;
     opacity: 1;
   }
@@ -581,11 +644,7 @@ body{
     margin-top: 0;
   }
 
-  /* un filo di compattezza quando collassi */
   .topbar.is-collapsed{
     padding-bottom: 10px;
   }
 }
-
-
-
