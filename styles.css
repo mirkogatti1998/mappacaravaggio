@@ -624,6 +624,91 @@ body{
 @media (max-width: 520px){
   .slider{ height: 200px; }
 }
+/* ===== Slider immagini nel pannello ===== */
+.slider {
+  margin-top: 12px;
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.slider-track::-webkit-scrollbar { height: 6px; }
+.slider-track::-webkit-scrollbar-thumb {
+  background: rgba(200,184,166,.25);
+  border-radius: 999px;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(58,44,34,.8);
+  background: rgba(0,0,0,.15);
+}
+
+.slide img {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 28vh, 260px);
+  object-fit: cover;
+}
+
+/* Frecce (desktop) */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(27,20,16,.55);
+  color: var(--text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+.slider-btn:hover { filter: brightness(1.08); }
+
+.slider-btn.prev { left: 10px; }
+.slider-btn.next { right: 10px; }
+
+@media (max-width: 640px) {
+  .slider-btn { display: none; } /* su mobile swipe e basta */
+}
+
+/* Pallini */
+.slider-dots {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(200,184,166,.35);
+  background: rgba(200,184,166,.15);
+}
+
+.slider-dot.active {
+  background: rgba(200,161,90,.9);
+  border-color: rgba(200,161,90,.9);
+}
+
 
 
 
