@@ -1026,6 +1026,49 @@ function renderFavsList(){
 }
 
 // ===== 11) Geolocalizzazione =====
+
+const userArrowIcon = L.divIcon({
+  className: "user-arrow",
+  html: "➤",
+  iconSize: [32, 32],
+  iconAnchor: [16, 16]
+});
+
+let compassOn = false;
+
+function enableCompassOnce(){
+  if (compassOn) return;
+
+  const start = () => {
+    compassOn = true;
+
+    // usa absolute quando c'è, ma su alcuni device arriva solo "deviceorientation"
+    const handler = (e) => {
+      if (!userMarker) return;
+
+      const alpha = (e && typeof e.alpha === "number") ? e.alpha : null;
+      if (alpha == null) return;
+
+      const heading = 360 - alpha;
+      const el = userMarker.getElement();
+      if (el) el.style.transform = `rotate(${heading}deg)`;
+    };
+
+    window.addEventListener("deviceorientationabsolute", handler, true);
+    window.addEventListener("deviceorientation", handler, true);
+  };
+
+  // iOS: chiede permesso
+  if (typeof DeviceOrientationEvent !== "undefined" &&
+      typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission()
+      .then(state => { if (state === "granted") start(); })
+      .catch(() => {});
+  } else {
+    start();
+  }
+}
+
 function locateMe() {
   if (!("geolocation" in navigator)) {
     alert("Geolocalizzazione non supportata dal browser.");
@@ -1039,13 +1082,12 @@ function locateMe() {
 
       map.setView([latitude, longitude], 16, { animate: true });
 
+      // evita frecce duplicate
       if (userMarker) userMarker.remove();
-      userMarker = L.circleMarker([latitude, longitude], {
-        radius: 8,
-        color: "#0077ff",
-        fillColor: "#0077ff",
-        fillOpacity: 0.8
-      }).addTo(map);
+      userMarker = L.marker([latitude, longitude], { icon: userArrowIcon }).addTo(map);
+
+      // attiva bussola UNA sola volta
+      enableCompassOnce();
 
       // niente popup "fastidioso": solo marker
       renderMarkers(); // aggiorna distanze
@@ -1055,6 +1097,7 @@ function locateMe() {
     () => alert("Posizione non disponibile (permesso negato o segnale debole).")
   );
 }
+
 
 // ===== 12) Search: X interna =====
 function syncClearBtn(){
@@ -1270,6 +1313,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
