@@ -263,7 +263,7 @@ function applyRouteMode(routeLayer, routeName = "", routeDesc = ""){
 
   // box info percorso (km + minuti stimati)
   const km = getRouteLengthKm(activeRouteLayer);
-  const walkMin = estimateTimeMinutes(km, 4.5);
+  const walkMin = estimateTimeMinutes(km, 3.5);
   const bikeMin = estimateTimeMinutes(km, 15);
 
   const html = `
@@ -927,6 +927,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
