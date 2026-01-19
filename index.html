@@ -14,40 +14,44 @@
 </head>
 
 <body>
-<header class="topbar">
-  <div class="brand">
-    <h1>Mappa di Caravaggio</h1>
-    <p>Esplora il borgo e dintorni</p>
-  </div>
+  <a class="skip-link" href="#map">Vai alla mappa</a>
 
-  <button id="toggleTopbar" class="topbar-toggle" type="button"
-          aria-expanded="true" aria-label="Comprimi pannello">▾</button>
-
-  <div class="controls">
-   
-
-    <button id="toggleCats" class="ghost-btn" type="button">Categorie</button>
-    
-    <label class="field">
-      <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." />
-    </label>
-
-    <div class="actions">
-      <button id="locateBtn" class="btn-primary" type="button">Dove sono io?</button>
-      <button id="resetBtn" class="btn-ghost" type="button" title="Azzera filtri">Reset</button>
+  <header class="topbar">
+    <div class="brand">
+      <h1>Mappa di Caravaggio</h1>
+      <p>Esplora il borgo e dintorni</p>
     </div>
 
-   
-  </div>
-</header>
+    <button id="toggleTopbar" class="topbar-toggle" type="button"
+            aria-expanded="true" aria-label="Comprimi pannello">▾</button>
 
+    <div class="controls">
+      <button id="toggleCats" class="ghost-btn" type="button" aria-controls="catsDrawer" aria-expanded="false">
+        Categorie
+      </button>
+
+      <button id="toggleList" class="ghost-btn" type="button" aria-controls="listDrawer" aria-expanded="false">
+        Cosa c’è qui vicino
+      </button>
+
+      <label class="field">
+        <span class="sr-only">Cerca punti di interesse</span>
+        <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." autocomplete="off" />
+      </label>
+
+      <div class="actions">
+        <button id="locateBtn" class="btn-primary" type="button">Dove sono io?</button>
+        <button id="resetBtn" class="btn-ghost" type="button" title="Azzera filtri">Reset</button>
+      </div>
+    </div>
+  </header>
 
   <main class="layout">
-    <div id="map"></div>
+    <div id="map" tabindex="-1"></div>
 
     <aside id="sidePanel" class="side-panel hidden" aria-label="Dettagli punto di interesse">
       <div class="panel-head">
-        <button id="closePanel" class="btn-ghost" type="button">✕</button>
+        <button id="closePanel" class="btn-ghost" type="button" aria-label="Chiudi dettagli">✕</button>
       </div>
       <div id="panelContent"></div>
     </aside>
@@ -63,28 +67,45 @@
       </div>
     </div>
   </footer>
-  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
-  <div class="frame" role="dialog" aria-modal="true">
-    <button id="lbClose" class="close" type="button" aria-label="Chiudi">✕</button>
-    <button id="lbPrev" class="nav prev" type="button" aria-label="Foto precedente">‹</button>
-    <button id="lbNext" class="nav next" type="button" aria-label="Foto successiva">›</button>
 
-    <div id="lbCounter" class="counter"></div>
-    <img id="lbImg" src="" alt="">
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+    <div class="frame" role="dialog" aria-modal="true" aria-label="Galleria immagini">
+      <button id="lbClose" class="close" type="button" aria-label="Chiudi">✕</button>
+      <button id="lbPrev" class="nav prev" type="button" aria-label="Foto precedente">‹</button>
+      <button id="lbNext" class="nav next" type="button" aria-label="Foto successiva">›</button>
+
+      <div id="lbCounter" class="counter"></div>
+      <img id="lbImg" src="" alt="">
+    </div>
   </div>
-</div>
- <div id="catsDrawer" class="cats-drawer hidden" aria-hidden="true">
-  <div class="cats-drawer-head">
-    <strong>Categorie</strong>
-    <button id="closeCats" class="close-btn" type="button">✕</button>
+
+  <!-- Drawer categorie -->
+  <div id="catsDrawer" class="cats-drawer hidden" aria-hidden="true">
+    <div class="cats-drawer-head">
+      <strong>Categorie</strong>
+      <button id="closeCats" class="close-btn" type="button" aria-label="Chiudi categorie">✕</button>
+    </div>
+    <div id="legend" class="legend"></div>
   </div>
-  <div id="legend" class="legend"></div>
-</div> 
+
+  <!-- Drawer “vicino a me / preferiti” -->
+  <div id="listDrawer" class="cats-drawer hidden" aria-hidden="true">
+    <div class="cats-drawer-head">
+      <strong>Luoghi</strong>
+      <button id="closeList" class="close-btn" type="button" aria-label="Chiudi elenco">✕</button>
+    </div>
+
+    <div class="list-tabs" role="tablist" aria-label="Elenco luoghi">
+      <button id="tabNearby" class="tab-btn is-active" type="button" role="tab" aria-selected="true">
+        Vicino
+      </button>
+      <button id="tabFavs" class="tab-btn" type="button" role="tab" aria-selected="false">
+        Preferiti
+      </button>
+    </div>
+
+    <div id="poiList" class="poi-list" role="region" aria-label="Elenco luoghi"></div>
+  </div>
 </body>
 </html>
-
-
-
-
-
-
