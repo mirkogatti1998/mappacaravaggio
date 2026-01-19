@@ -14,97 +14,87 @@
 </head>
 
 <body>
-
-  <header class="topbar">
-    <div class="brand">
-      <h1>Mappa di Caravaggio</h1>
-      <p>Esplora il borgo e dintorni</p>
-    </div>
-
-    <button id="toggleTopbar" class="topbar-toggle" type="button"
-            aria-expanded="true" aria-label="Comprimi pannello">▾</button>
-
-    <div class="controls">
-      <button id="toggleCats" class="ghost-btn" type="button" aria-controls="catsDrawer" aria-expanded="false">
-        Categorie
-      </button>
-
-      <button id="toggleList" class="ghost-btn" type="button" aria-controls="listDrawer" aria-expanded="false">
-        Cosa c’è qui vicino
-      </button>
-
-      <label class="field">
-        <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." autocomplete="off" />
-      </label>
-
-      <div class="actions">
-        <button id="locateBtn" class="btn-primary" type="button">Dove sono io?</button>
-        <button id="resetBtn" class="btn-ghost" type="button" title="Azzera filtri">Reset</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="layout">
-    <div id="map" tabindex="-1"></div>
-
-    <aside id="sidePanel" class="side-panel hidden" aria-label="Dettagli punto di interesse">
-      <div class="panel-head">
-        <button id="closePanel" class="btn-ghost" type="button" aria-label="Chiudi dettagli">✕</button>
-      </div>
-      <div id="panelContent"></div>
-    </aside>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-title">Crediti</div>
-      <div class="footer-text">
-        Icone mappa: Map Icons Collection — Licenza CC BY-SA 3.0
-        <span class="sep">•</span>
-        Fonte cartografica: OpenStreetMap contributors
-      </div>
-    </div>
-  </footer>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
-    <div class="frame" role="dialog" aria-modal="true" aria-label="Galleria immagini">
-      <button id="lbClose" class="close" type="button" aria-label="Chiudi">✕</button>
-      <button id="lbPrev" class="nav prev" type="button" aria-label="Foto precedente">‹</button>
-      <button id="lbNext" class="nav next" type="button" aria-label="Foto successiva">›</button>
-
-      <div id="lbCounter" class="counter"></div>
-      <img id="lbImg" src="" alt="">
-    </div>
+<header class="topbar">
+  <div class="brand">
+    <h1>Mappa di Caravaggio</h1>
+    <p>Esplora il borgo e dintorni</p>
   </div>
 
-  <!-- Drawer categorie -->
-  <div id="catsDrawer" class="cats-drawer hidden" aria-hidden="true">
-    <div class="cats-drawer-head">
-      <strong>Categorie</strong>
-      <button id="closeCats" class="close-btn" type="button" aria-label="Chiudi categorie">✕</button>
+  <button id="toggleTopbar" class="topbar-toggle" type="button"
+          aria-expanded="true" aria-label="Comprimi pannello">▾</button>
+
+  <div class="controls">
+    <button id="toggleCats" class="ghost-btn" type="button" aria-haspopup="dialog" aria-controls="catsDrawer">Categorie</button>
+    <button id="toggleNearby" class="ghost-btn" type="button" aria-haspopup="dialog" aria-controls="nearbyDrawer">Vicino a me</button>
+    <button id="toggleFavs" class="ghost-btn" type="button" aria-haspopup="dialog" aria-controls="favsDrawer">Preferiti</button>
+
+    <label class="field search-field">
+      <input id="searchInput" placeholder="Cerca: castello, santuario, porta, museo..." aria-label="Cerca punti di interesse" />
+      <button id="clearSearch" class="search-clear" type="button" aria-label="Cancella ricerca" title="Cancella ricerca">✕</button>
+    </label>
+
+    <div class="actions">
+      <button id="locateBtn" class="btn-primary" type="button">Dove sono io?</button>
     </div>
-    <div id="legend" class="legend"></div>
   </div>
+</header>
 
-  <!-- Drawer “vicino a me / preferiti” -->
-  <div id="listDrawer" class="cats-drawer hidden" aria-hidden="true">
-    <div class="cats-drawer-head">
-      <strong>Luoghi</strong>
-      <button id="closeList" class="close-btn" type="button" aria-label="Chiudi elenco">✕</button>
+<main class="layout">
+  <div id="map"></div>
+
+  <aside id="sidePanel" class="side-panel hidden" aria-label="Dettagli punto di interesse" aria-hidden="true">
+    <div class="panel-head">
+      <button id="closePanel" class="btn-ghost" type="button" aria-label="Chiudi scheda">✕</button>
     </div>
+    <div id="panelContent"></div>
+  </aside>
+</main>
 
-    <div class="list-tabs" role="tablist" aria-label="Elenco luoghi">
-      <button id="tabNearby" class="tab-btn is-active" type="button" role="tab" aria-selected="true">
-        Vicino
-      </button>
-      <button id="tabFavs" class="tab-btn" type="button" role="tab" aria-selected="false">
-        Preferiti
-      </button>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">Crediti</div>
+    <div class="footer-text">
+      Icone mappa: Map Icons Collection — Licenza CC BY-SA 3.0
+      <span class="sep">•</span>
+      Fonte cartografica: OpenStreetMap contributors
     </div>
-
-    <div id="poiList" class="poi-list" role="region" aria-label="Elenco luoghi"></div>
   </div>
+</footer>
+
+<div id="lightbox" class="lightbox hidden" aria-hidden="true">
+  <div class="frame" role="dialog" aria-modal="true" aria-label="Galleria immagini">
+    <button id="lbClose" class="close" type="button" aria-label="Chiudi">✕</button>
+    <button id="lbPrev" class="nav prev" type="button" aria-label="Foto precedente">‹</button>
+    <button id="lbNext" class="nav next" type="button" aria-label="Foto successiva">›</button>
+
+    <div id="lbCounter" class="counter"></div>
+    <img id="lbImg" src="" alt="">
+  </div>
+</div>
+
+<div id="catsDrawer" class="cats-drawer hidden" aria-hidden="true" role="dialog" aria-label="Categorie">
+  <div class="cats-drawer-head">
+    <strong>Categorie</strong>
+    <button id="closeCats" class="close-btn" type="button" aria-label="Chiudi">✕</button>
+  </div>
+  <div id="legend" class="legend"></div>
+</div>
+
+<div id="nearbyDrawer" class="cats-drawer hidden" aria-hidden="true" role="dialog" aria-label="Cosa c’è qui vicino">
+  <div class="cats-drawer-head">
+    <strong>Cosa c’è qui vicino</strong>
+    <button id="closeNearby" class="close-btn" type="button" aria-label="Chiudi">✕</button>
+  </div>
+  <div id="nearbyList" class="poi-list"></div>
+</div>
+
+<div id="favsDrawer" class="cats-drawer hidden" aria-hidden="true" role="dialog" aria-label="Preferiti">
+  <div class="cats-drawer-head">
+    <strong>Preferiti</strong>
+    <button id="closeFavs" class="close-btn" type="button" aria-label="Chiudi">✕</button>
+  </div>
+  <div id="favsList" class="poi-list"></div>
+</div>
+
 </body>
 </html>
-
