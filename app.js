@@ -476,15 +476,13 @@ const categoryIcons = {
   "Chiese e monasteri": makeIcon("icons/chiese.png"),
   "Museo": makeIcon("icons/museo.png"),
   "Natura": makeIcon("icons/natura.png"),
-  "Opere militari": makeIcon("icons/militari.png"),
+  "Opere militari e fortificazioni": makeIcon("icons/militari.png"),
   "Personaggi della storia": makeIcon("icons/personaggi.png"),
-  "Porta": makeIcon("icons/porta.png"),
   "Storia": makeIcon("icons/storia.png"),
   "Tesori nascosti": makeIcon("icons/tesori.png"),
-  "Edifici pubblici": makeIcon("icons/pubblici.png"),
-  "Edifici privati": makeIcon("icons/privati.png"),
+  "Edifici": makeIcon("icons/pubblici.png"),
   "Località": makeIcon("icons/localita.png"),
-  "Luoghi del quotidiano": makeIcon("icons/quotidiano.png"),
+  "Luoghi": makeIcon("icons/quotidiano.png"),
   "Luoghi di oggi": makeIcon("icons/oggi.png"),
 };
 const defaultIcon = makeIcon("icons/default.png");
@@ -1195,6 +1193,10 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
+let activeTypes = ["see"]; // default
+
+const visible = allPois.filter(p => activeTypes.includes(p.type));
 
 
 
