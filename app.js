@@ -415,6 +415,59 @@ function closeDrawer(el){
   el.classList.remove("anim-in");
 }
 
+// ===== Drawer livelli =====
+const toggleLevels = document.getElementById("toggleLevels");
+const levelsDrawer = document.getElementById("levelsDrawer");
+const closeLevels = document.getElementById("closeLevels");
+const levelsList = document.getElementById("levelsList");
+
+function openLevels(){ openDrawer(levelsDrawer); syncLevelsUI(); }
+function closeLevelsDrawer(){ closeDrawer(levelsDrawer); }
+
+if (toggleLevels) toggleLevels.addEventListener("click", () => {
+  if (!levelsDrawer) return;
+  levelsDrawer.classList.contains("hidden") ? openLevels() : closeLevelsDrawer();
+});
+if (closeLevels) closeLevels.addEventListener("click", closeLevelsDrawer);
+
+function setLevel(mode){
+  if (mode === "all") activeTypes = new Set(["see","stories","hidden","lost"]);
+  else activeTypes = new Set([mode]);
+
+  activeCategory = "all";
+
+  closeLevelsDrawer();
+  closeSidePanel();
+
+  buildLegend();
+  renderMarkers({ shouldZoom: true });
+
+  if (nearbyDrawer && !nearbyDrawer.classList.contains("hidden")) renderNearbyList();
+  if (favsDrawer && !favsDrawer.classList.contains("hidden")) renderFavsList();
+}
+
+function syncLevelsUI(){
+  if (!levelsList) return;
+  const chips = Array.from(levelsList.querySelectorAll(".level-chip"));
+
+  const isAll = ["see","stories","hidden","lost"].every(x => activeTypes.has(x));
+  chips.forEach(ch => {
+    const lv = ch.dataset.level;
+    ch.classList.toggle("active",
+      (lv === "all" && isAll) || (lv !== "all" && !isAll && activeTypes.has(lv))
+    );
+  });
+}
+
+if (levelsList){
+  levelsList.addEventListener("click", (e) => {
+    const btn = e.target.closest(".level-chip");
+    if (!btn) return;
+    setLevel(btn.dataset.level);
+  });
+}
+
+
 // Drawer categorie
 const toggleCats = document.getElementById("toggleCats");
 const catsDrawer = document.getElementById("catsDrawer");
@@ -818,59 +871,6 @@ function buildLegend(){
   L.DomEvent.disableClickPropagation(legendEl);
   L.DomEvent.disableScrollPropagation(legendEl);
 
-// Drawer livelli
-const toggleLevels = document.getElementById("toggleLevels");
-const levelsDrawer = document.getElementById("levelsDrawer");
-const closeLevels = document.getElementById("closeLevels");
-const levelsList = document.getElementById("levelsList");
-
-function openLevels(){ openDrawer(levelsDrawer); syncLevelsUI(); }
-function closeLevelsDrawer(){ closeDrawer(levelsDrawer); }
-
-if (toggleLevels) toggleLevels.addEventListener("click", () => {
-  if (!levelsDrawer) return;
-  levelsDrawer.classList.contains("hidden") ? openLevels() : closeLevelsDrawer();
-});
-if (closeLevels) closeLevels.addEventListener("click", closeLevelsDrawer);
-
-function setLevel(mode){
-  // "all" = tutti, altrimenti singolo livello
-  if (mode === "all") activeTypes = new Set(["see","stories","hidden","lost"]);
-  else activeTypes = new Set([mode]);
-
-  // opzionale ma consigliato: se la categoria selezionata non ha POI nel nuovo livello, torna a "all"
-  activeCategory = "all";
-
-  closeLevelsDrawer();
-  closeSidePanel();
-
-  buildLegend();                 // legenda categorie aggiornata (se vuoi che segua i livelli)
-  renderMarkers({ shouldZoom: true });
-
-  if (nearbyDrawer && !nearbyDrawer.classList.contains("hidden")) renderNearbyList();
-  if (favsDrawer && !favsDrawer.classList.contains("hidden")) renderFavsList();
-}
-
-function syncLevelsUI(){
-  if (!levelsList) return;
-  const chips = Array.from(levelsList.querySelectorAll(".level-chip"));
-
-  const isAll = ["see","stories","hidden","lost"].every(x => activeTypes.has(x));
-  chips.forEach(ch => {
-    const lv = ch.dataset.level;
-    ch.classList.toggle("active", (lv === "all" && isAll) || (lv !== "all" && !isAll && activeTypes.has(lv)));
-  });
-}
-
-if (levelsList){
-  levelsList.addEventListener("click", (e) => {
-    const btn = e.target.closest(".level-chip");
-    if (!btn) return;
-    setLevel(btn.dataset.level);
-  });
-}
-
-  
   cats.forEach(cat => {
     const row = document.createElement("div");
     row.className = "legend-item";
@@ -902,6 +902,7 @@ if (levelsList){
 
   updateLegendActiveState();
 }
+
 
 // ===== 9) Vicino a me =====
 function poiCardHtml(p){
@@ -1263,10 +1264,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
-
-let activeTypes = ["see"]; // default
-
-const visible = allPois.filter(p => activeTypes.includes(p.type));
 
 
 
