@@ -902,4 +902,37 @@ body{
     border-radius: 14px;
   }
 }
+/* Bottone Preferiti solo stellina */
+.ghost-btn--star{
+  width: 44px;
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* Drawer livelli */
+.levels-list{
+  display: grid;
+  gap: 10px;
+}
+
+.level-chip{
+  text-align: left;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(58,44,34,.8);
+  background: rgba(15,13,11,.35);
+  color: var(--text);
+  cursor: pointer;
+}
+.level-chip:hover{ filter: brightness(1.06); }
+
+.level-chip.active{
+  border-color: rgba(200,161,90,.45);
+  background: rgba(200,161,90,.10);
+}
+
 
