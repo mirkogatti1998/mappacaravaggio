@@ -937,6 +937,14 @@ body{
   border-color: rgba(200,161,90,.45);
   background: rgba(200,161,90,.10);
 }
+.user-arrow {
+  font-size: 26px;
+  color: #ff3b30;   /* rosso visibile */
+  font-weight: 900;
+  text-shadow: 0 0 6px rgba(0,0,0,.6);
+  transform-origin: center;
+}
+
 
 
 
