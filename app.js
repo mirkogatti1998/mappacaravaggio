@@ -361,7 +361,6 @@ function toggleFav(p){
 // ===== 3) UI =====
 const searchInput = document.getElementById("searchInput");
 const clearSearchBtn = document.getElementById("clearSearch");
-const locateBtn = document.getElementById("locateBtn");
 
 const sidePanel = document.getElementById("sidePanel");
 const closePanel = document.getElementById("closePanel");
@@ -500,9 +499,10 @@ const nearbyList = document.getElementById("nearbyList");
 function openNearby(){
   openDrawer(nearbyDrawer);
 
-  // se non ho posizione, la chiedo subito (così "Vicino a me" fa anche "Dove sono io")
-  if (!userLatLng) {
-    locateMe(); // aggiorna userLatLng e poi renderizza liste/marker
+  // "Vicino a me" fa anche "Dove sono io?"
+  if (!userLatLng){
+    locateMe();
+    return; // aspetta il callback del GPS, che poi aggiorna lista e marker
   }
 
   renderNearbyList();
@@ -1056,8 +1056,6 @@ function locateMe() {
   );
 }
 
-if (locateBtn) locateBtn.addEventListener("click", locateMe);
-
 // ===== 12) Search: X interna =====
 function syncClearBtn(){
   if (!clearSearchBtn || !searchInput) return;
@@ -1272,6 +1270,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
