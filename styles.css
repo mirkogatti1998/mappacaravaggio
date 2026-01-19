@@ -284,14 +284,16 @@ body{
 .cats-drawer{
   position: fixed;
   left: 12px;
+
   top: calc(var(--header-h, 120px) + 10px);
+
+  /* NUOVO: lascia spazio al footer + safe-area iOS */
+  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 12px);
+
   width: min(360px, 92vw);
-  max-height: calc(100vh - (var(--header-h, 120px) + 24px));
   overflow: auto;
 
-  background:
-    var(--paper-noise),
-    rgba(34,26,21,.96);
+  background: var(--paper-noise), rgba(34,26,21,.96);
   border: 1px solid var(--border);
   box-shadow: 0 14px 40px rgba(0,0,0,.45);
   border-radius: 14px;
@@ -301,6 +303,7 @@ body{
   transform: translateY(10px);
   opacity: 0;
 }
+
 .cats-drawer.hidden{ display:none; }
 
 @keyframes drawerIn{
@@ -934,5 +937,6 @@ body{
   border-color: rgba(200,161,90,.45);
   background: rgba(200,161,90,.10);
 }
+
 
 
