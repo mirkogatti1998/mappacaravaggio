@@ -588,8 +588,6 @@ function openPanel(p, distancePretty){
     `
     : "";
 
-  const directionsUrl = googleMapsDirectionsUrl(p);
-  const fav = isFav(p);
 
    const directionsUrl = googleMapsDirectionsUrl(p);
   const fav = isFav(p);
@@ -1197,5 +1195,6 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
