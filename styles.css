@@ -986,34 +986,44 @@ a:visited{
   grid-template-columns: repeat(5, 1fr);
   gap: 6px;
   width: 100%;
+  align-items: start;
 }
 
 .icon-btn{
-  background: none;
   border: none;
-  padding: 10px 4px;
+  background: transparent;
+  padding: 10px 2px;
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 26px auto;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
 
+  min-width: 0; /* IMPORTANTISSIMO per evitare tagli strani */
   color: inherit;
-  font-family: inherit;
   cursor: pointer;
 }
 
 .icon-btn .ico{
+  height: 26px;
+  display: grid;
+  place-items: center;
   font-size: 22px;
   line-height: 1;
 }
 
 .icon-btn .lbl{
-  font-size: 12px;
+  font-size: 11px;        /* un pelo più piccolo: su iPhone non taglia */
   margin-top: 4px;
-  opacity: 0.85;
+  opacity: .88;
+  line-height: 1.1;
+
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; /* se mai dovesse, taglia con …, non con “c” */
   white-space: nowrap;
 }
+
 
 /* Bottone principale (Esplora) */
 .icon-btn.primary{
@@ -1024,6 +1034,24 @@ a:visited{
 .icon-btn:active{
   transform: scale(0.96);
 }
+@media (max-width: 640px){
+  .search-row{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .field.grow,
+  .search-wrap,
+  .search-wrap input{
+    width: 100%;
+    min-width: 0;
+  }
+
+  .field input{
+    min-width: 0;   /* annulla i 220px desktop */
+  }
+}
+
 
 
 
