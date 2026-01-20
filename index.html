@@ -24,25 +24,34 @@
           aria-expanded="true" aria-label="Comprimi pannello">▾</button>
 
 <div class="controls">
-  <div class="btn-row" role="group" aria-label="Pannelli">
-  <button id="toggleCats" class="ghost-btn" type="button">Categorie</button>
+<div class="btn-row icon-bar">
 
-  <button id="toggleLevels" class="ghost-btn" type="button"
-          aria-haspopup="dialog" aria-controls="levelsDrawer">
-    Livelli
+  <button id="toggleCats" class="icon-btn">
+    <span class="ico">☰</span>
+    <span class="lbl">Categorie</span>
   </button>
 
-  <button id="toggleNearby" class="btn-primary" type="button">📍 Vicino a me</button>
-<button id="toggleGuide" class="ghost-btn" type="button" onclick="window.location.href='guida.html'">
-  Guida
-</button>
-
-
-  <button id="toggleFavs" class="ghost-btn ghost-btn--star" type="button" aria-label="Preferiti">
-    ★
+  <button id="toggleLevels" class="icon-btn">
+    <span class="ico">⧉</span>
+    <span class="lbl">Livelli</span>
   </button>
+
+  <button id="locateBtn" class="icon-btn primary">
+    <span class="ico">◎</span>
+    <span class="lbl">Esplora</span>
+  </button>
+
+  <button id="openGuide" class="icon-btn">
+    <span class="ico">ⓘ</span>
+    <span class="lbl">Info</span>
+  </button>
+
+  <button id="toggleFavs" class="icon-btn">
+    <span class="ico">★</span>
+    <span class="lbl">Preferiti</span>
+  </button>
+
 </div>
-
 
   <div class="search-row">
     <label class="field grow">
@@ -133,6 +142,7 @@
 
 </body>
 </html>
+
 
 
 
