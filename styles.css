@@ -1079,6 +1079,135 @@ a:visited{
 #openGuide *{
   pointer-events: none; /* così il tap vale sempre sul bottone, non sullo span */
 }
+/* =========================
+   MOBILE: controlli flottanti
+   ========================= */
+@media (max-width: 640px){
+
+  /* Header più compatto (titolo + sottotitolo) */
+  .topbar{
+    padding: 12px 14px 10px;
+  }
+  .brand h1{ margin:0; font-size: 22px; line-height: 1.15; }
+  .brand p{ margin: 4px 0 0; font-size: 13px; opacity: .85; }
+
+  /* --- CONTROLLI FLOTTANTI SOPRA LA MAPPA --- */
+  .topbar .controls{
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: calc(var(--header-h) + 10px);
+    z-index: 1200;
+    pointer-events: none; /* cliccabili solo i figli */
+  }
+  .topbar .controls *{ pointer-events: auto; }
+
+  /* fila icone (i tuoi button.icon-btn) */
+  .topbar .btn-row{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 0 0 10px;
+  }
+
+  /* pallini “vivi” */
+  .topbar .icon-btn{
+    flex: 1;
+    min-width: 0;
+    height: 58px;
+    padding: 8px 6px;
+    border-radius: 18px;
+    background: rgba(25, 18, 14, .45); /* più trasparente */
+    border: 1px solid rgba(242,233,220,.14);
+    box-shadow: 0 10px 22px rgba(0,0,0,.30);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    display: grid;
+    place-items: center;
+    gap: 6px;
+    text-align: center;
+  }
+  .topbar .icon-btn .ico{
+    line-height: 1;
+    font-size: 20px; /* simboli non trasparenti */
+    opacity: 1;
+  }
+  .topbar .icon-btn .lbl{
+    font-size: 12px;
+    line-height: 1.1;
+    opacity: 1;           /* testo non trasparente */
+    white-space: nowrap;  /* se vuoi evitare tagli strani */
+  }
+
+  /* stato “primary” (Esplora) */
+  .topbar .icon-btn.primary{
+    background: rgba(160, 40, 35, .70);
+    border-color: rgba(255,255,255,.14);
+  }
+
+  /* --- barra di ricerca: full width su mobile --- */
+  .topbar .search-row{
+    display: block;
+    margin: 0;
+  }
+  .topbar .search-row .field{
+    display: block;
+    width: 100%;
+  }
+  .topbar .search-wrap{
+    width: 100%;
+    background: rgba(25,18,14,.35);
+    border: 1px solid rgba(242,233,220,.14);
+    border-radius: 18px;
+    padding: 10px 12px;
+    transition: background .18s ease, border-color .18s ease;
+  }
+  .topbar .search-wrap:focus-within{
+    background: rgba(25,18,14,.70); /* meno trasparente mentre scrivi */
+    border-color: rgba(242,233,220,.24);
+  }
+  .topbar #searchInput{
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+    border: 0;
+    outline: none;
+  }
+
+  /* nascondo eventuale colonna azioni in search-row su mobile */
+  .topbar .search-row .actions{ display:none; }
+
+  /* --- animazione mini “giù e poi su” quando si chiude --- */
+  .topbar .controls{
+    transform-origin: top center;
+    transition: opacity .22s ease, transform .22s ease;
+  }
+  body.ui-hidden .topbar .controls{
+    animation: floatHide .24s ease forwards;
+    pointer-events: none;
+  }
+  body:not(.ui-hidden) .topbar .controls{
+    animation: floatShow .22s ease;
+  }
+
+  @keyframes floatHide{
+    0%   { opacity: 1; transform: translateY(0); }
+    45%  { opacity: 1; transform: translateY(6px); }
+    100% { opacity: 0; transform: translateY(-10px); }
+  }
+  @keyframes floatShow{
+    0%   { opacity: 0; transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* accessibilità: se l’utente chiede meno movimento, stop animazioni */
+  @media (prefers-reduced-motion: reduce){
+    .topbar .controls{ animation: none !important; transition: none !important; }
+  }
+}
+
 
 
 
