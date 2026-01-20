@@ -1051,6 +1051,27 @@ a:visited{
     min-width: 0;   /* annulla i 220px desktop */
   }
 }
+/* Search full width su mobile */
+@media (max-width: 640px){
+
+  .topbar .controls,
+  .search-row,
+  .search-row .field,
+  .search-wrap{
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .search-wrap{
+    padding: 0;
+  }
+
+  #searchInput{
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 
 
 
