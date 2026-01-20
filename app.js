@@ -389,6 +389,7 @@ const topbarToggle = document.getElementById("toggleTopbar");
 function setTopbarCollapsed(collapsed){
   if (!headerEl) return;
   headerEl.classList.toggle("is-collapsed", collapsed);
+document.body.classList.toggle("ui-hidden", collapsed);
 
   if (topbarToggle){
     topbarToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
@@ -1324,6 +1325,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
