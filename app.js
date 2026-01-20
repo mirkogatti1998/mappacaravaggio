@@ -1,7 +1,7 @@
 // ===== 1) Mappa =====
 const DEFAULT_VIEW = { center: [45.497, 9.644], zoom: 15 };
 
-const map = L.map("map", { zoomControl: true })
+const map = L.map("map", { zoomControl: false })
   .setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
@@ -1325,6 +1325,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
