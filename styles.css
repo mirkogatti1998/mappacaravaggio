@@ -957,6 +957,18 @@ a:visited{
   text-shadow: 0 0 6px rgba(0,0,0,.6);
   transform-origin: center;
 }
+/* Header: bottone guida un po' più compatto */
+#toggleGuide{
+  padding: 10px 12px;
+}
+
+/* Mobile: evita che i bottoni vadano “schiacciati” */
+@media (max-width: 640px){
+  .btn-row{
+    gap: 8px;
+  }
+}
+
 
 
 
