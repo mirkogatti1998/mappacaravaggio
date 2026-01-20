@@ -496,6 +496,15 @@ const nearbyDrawer = document.getElementById("nearbyDrawer");
 const closeNearby = document.getElementById("closeNearby");
 const nearbyList = document.getElementById("nearbyList");
 
+const openGuide = document.getElementById("openGuide");
+
+if (openGuide) {
+  openGuide.addEventListener("click", () => {
+    window.location.href = "guida.html";
+  });
+}
+
+
 function openNearby(){
   openDrawer(nearbyDrawer);
 
@@ -1313,6 +1322,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") lbSetIndex(lbIndex - 1);
   if (e.key === "ArrowRight") lbSetIndex(lbIndex + 1);
 });
+
 
 
 
