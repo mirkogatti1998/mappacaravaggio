@@ -994,6 +994,50 @@ a:visited{
 @media (max-width: 380px){
   .btn-row{ grid-template-columns: repeat(2, 1fr); }
 }
+.icon-bar{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  width: 100%;
+}
+
+.icon-btn{
+  background: none;
+  border: none;
+  padding: 10px 4px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.icon-btn .ico{
+  font-size: 22px;
+  line-height: 1;
+}
+
+.icon-btn .lbl{
+  font-size: 12px;
+  margin-top: 4px;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+/* Bottone principale (Esplora) */
+.icon-btn.primary{
+  color: #fff;
+}
+
+/* Effetto tap */
+.icon-btn:active{
+  transform: scale(0.96);
+}
+
 
 
 
