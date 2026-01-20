@@ -1314,6 +1314,18 @@ footer {
   width: 100%;
   z-index: 900;
 }
+.btn-row.icon-bar,
+.search-wrap {
+  max-width: 560px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .btn-row.icon-bar,
+  .search-wrap {
+    width: 100%;
+  }
+}
+
 
 
 
