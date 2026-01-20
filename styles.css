@@ -1105,11 +1105,10 @@ a:visited{
     top: calc(var(--header-h) + 10px);
     z-index: 1200;
 
-    /* CENTRATORE: impedisce “slittamenti” */
+    /* centratore */
     max-width: 520px;
     margin: 0 auto;
 
-    /* layout pulito */
     display: grid;
     grid-template-rows: auto auto;
     gap: 10px;
@@ -1120,7 +1119,7 @@ a:visited{
   }
   .topbar .controls *{ pointer-events: auto; }
 
-  /* fila icone: GRIGLIA = sempre centrata e dentro */
+  /* fila icone: griglia centrata */
   .topbar .btn-row{
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -1130,7 +1129,7 @@ a:visited{
     align-items: start;
   }
 
-  /* pallini “vivi” - marroncini */
+  /* “tondi” marroncini (in realtà pill arrotondate) */
   .topbar .icon-btn{
     width: 100%;
     min-width: 0;
@@ -1138,7 +1137,7 @@ a:visited{
     padding: 8px 6px;
     border-radius: 18px;
 
-    background: rgba(54, 38, 28, .45); /* marroncino */
+    background: rgba(54, 38, 28, .45);
     border: 1px solid rgba(242,233,220,.14);
     box-shadow: 0 10px 22px rgba(0,0,0,.30);
     backdrop-filter: blur(10px);
@@ -1150,17 +1149,15 @@ a:visited{
     text-align: center;
   }
 
-  /* icona dentro un “pallino” leggero, ma NON trasparente */
+  /* NIENTE “pallini” dentro: solo simbolo */
   .topbar .icon-btn .ico{
-    width: 44px;
-    height: 44px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    background: transparent;
+    border: 0;
 
-    background: rgba(242,233,220,.06);
-    border: 1px solid rgba(242,233,220,.12);
-
+    display: block;
     line-height: 1;
     font-size: 20px;
     opacity: 1;
@@ -1170,15 +1167,18 @@ a:visited{
     font-size: 12px;
     line-height: 1.1;
     opacity: 1;
-
-    /* così “Categorie” non tocca i bordi */
     padding: 0 4px;
 
-    /* evita tagli brutti */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: 100%;
+  }
+
+  /* “Categorie” non tagliata: può andare su due righe */
+  #toggleCats .lbl{
+    white-space: normal;
+    line-height: 1.05;
   }
 
   /* stato “primary” (Esplora) */
@@ -1196,10 +1196,14 @@ a:visited{
   .topbar .search-row .field{
     display: block;
     width: 100%;
+    min-width: 0;
   }
   .topbar .search-wrap{
     width: 100%;
-    background: rgba(54, 38, 28, .36); /* marroncino, non grigio */
+    max-width: 100%;
+    min-width: 0;
+
+    background: rgba(54, 38, 28, .36);
     border: 1px solid rgba(242,233,220,.14);
     border-radius: 18px;
     padding: 10px 12px;
@@ -1211,24 +1215,25 @@ a:visited{
   }
   .topbar #searchInput{
     width: 100%;
+    min-width: 0;
     font-size: 16px;
     background: transparent;
     border: 0;
     outline: none;
   }
 
-  /* “Cerca:” più visibile */
+  /* placeholder “Cerca:” più visibile */
   .topbar #searchInput::placeholder{
-    color: rgba(242,233,220,.78);
+    color: rgba(242,233,220,.82);
     opacity: 1;
   }
 
   /* nascondo eventuale colonna azioni in search-row su mobile */
   .topbar .search-row .actions{ display:none; }
 
-  /* --- animazione: più lenta quando sparisce (più “viva”) --- */
+  /* --- animazione più “viva” quando si chiude --- */
   body.ui-hidden .topbar .controls{
-    animation: floatHide 420ms cubic-bezier(.2,.9,.2,1) forwards;
+    animation: floatHide 460ms cubic-bezier(.2,.9,.2,1) forwards;
     pointer-events: none;
   }
   body:not(.ui-hidden) .topbar .controls{
@@ -1237,28 +1242,16 @@ a:visited{
 
   @keyframes floatHide{
     0%   { opacity: 1; transform: translateY(0); }
-    55%  { opacity: 1; transform: translateY(10px) scale(.99); } /* mini giù */
-    100% { opacity: 0; transform: translateY(-14px); }          /* poi su e sparisce */
+    60%  { opacity: 1; transform: translateY(10px) scale(.99); }
+    100% { opacity: 0; transform: translateY(-6px); }
   }
   @keyframes floatShow{
     0%   { opacity: 0; transform: translateY(-10px); }
     100% { opacity: 1; transform: translateY(0); }
   }
 
+  /* accessibilità */
   @media (prefers-reduced-motion: reduce){
     .topbar .controls{ animation: none !important; transition: none !important; }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
