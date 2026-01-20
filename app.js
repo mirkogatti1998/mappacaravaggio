@@ -1,6 +1,7 @@
 // ===== 1) Mappa =====
 const DEFAULT_VIEW = { center: [45.497, 9.644], zoom: 15 };
 
+
 const map = L.map("map", { zoomControl: false })
   .setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
 
