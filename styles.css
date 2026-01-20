@@ -1297,5 +1297,23 @@ html, body {
   height: 100dvh;
   background: #000; /* fallback, ma non lo vedrai */
 }
+.controls {
+  width: min(560px, 100%);
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .controls {
+    padding: 0 12px;
+  }
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 900;
+}
+
 
 
