@@ -1327,6 +1327,38 @@ footer {
   margin-left: -10px;
 }
 
+/* iOS: evita scroll/bounce che sposta l’header */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (max-width: 640px){
+  body{
+    position: fixed;
+    inset: 0;
+    overscroll-behavior: none;
+  }
+
+  .topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
+  }
+
+  /* la mappa sta sotto l’header fisso */
+  #map{
+    top: var(--header-h);
+    height: calc(100dvh - var(--header-h));
+  }
+}
+/* sposta su tutti i controlli Leaflet in basso, sopra il footer */
+.leaflet-bottom{
+  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 10px) !important;
+}
+
 
 
 
