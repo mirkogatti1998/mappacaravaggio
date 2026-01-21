@@ -1,6 +1,6 @@
 {
   "name": "Mappa di Caravaggio",
-  "short_name": "Caravaggio",
+  "short_name": "Mappa di Caravaggio",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
