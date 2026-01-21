@@ -1,10 +1,12 @@
 [
   {
-    "name": "Porta Fulser",
-    "type": "lost",
-    "category": "Opere militari e fortificazioni",
+    "name": "Rione Fulser",
+    "type": "see",
+    "category": "Luoghi",
     "short": "",
-    "long": "La porta si apriva dando la possibilità di entrare nel rione omonimo. I termini medievali di Folcerius e Folzerius si devono ricollegare al latino falciarius, ovvero falciatore: se questo fosse etimologicamente giusto, si potrebbe sostenere che il rione Folcero fosse il rione dei contadini. (fonti: Santagiuliana 1981)",
+    "long": "In questo punto si trova la porta di sud-ovest, Porta Fulser. 
+    
+  Porta Folcero, nella traduzione italiana, si apriva dando la possibilità di entrare nel rione omonimo. I termini medievali di <i>Folcerius</i> e <i>Folzerius</i> sembrano ricollegarsi, con tutta probabilità, al latino <i>falciarius</i>, ovvero falciatore. Se l'etimologia dovesse essere giusta, si potrebbe connotare il rione come quello ospitante una popolazione prevalentemente contadina.",
     "lat": 45.495685,
     "lon": 9.6459602,
     "links": [],
@@ -13,11 +15,13 @@
     ]
   },
   {
-    "name": "Porta Seriöla",
-    "type": "lost",
-    "category": "Opere militari e fortificazioni",
+    "name": "Rione Seriöla",
+    "type": "see",
+    "category": "Luoghi",
     "short": "",
-    "long": "Porta Seriola si apre sull'omonimo quartiere. Il nome Seriola deriva dalla 'seriola', la quale univa la roggia Basso al fossato difensivo del Borgo. Il quartiere si è formato precedentemente alle mura, come si può immaginare dal perimetro irregolare che esse assumevano proprio in corrispondenza con il rione. Il nome più denotativo che connotativo farebbe pensare che il rione non avesse una natura definita, ma fosse il quartiere di accoglienza dei forestieri. Il simbolo del rione, che riporta una spiga, vorrebbe connotarlo come quartiere contadino. Ogni anno il 18 gennaio il rione è in festa per la sagra di Santa Liberata. (fonti: Santagliana 1981)",
+    "long": "In questo punto Porta Seriöla si apriva sull'omonimo rione.
+    
+  Il nome Seriöla deriva dalla 'seriola', canale che univa la roggia Basso al fossato difensivo del borgo. La forma trapezoidale del quartiere è, che dimostra la sua formazione precedentemente alla costruzione delle mura difensive, da al centro del borgo un perimetro irregolare. Questa irregolarità e il proprio nome, che, diversamente dagli altri rioni, non ha legami con i suoi abitanti, lascia pensare che fosse il quartiere di accoglienza dei forestieri. Il 18 gennaio di ogni anno, il rione è in festa per la sagra di Santa Liberata.",
     "lat": 45.4995956,
     "lon": 9.6447039,
     "links": [],
@@ -26,11 +30,14 @@
     ]
   },
   {
-    "name": "Porta Visnàt",
-    "type": "lost",
-    "category": "Opere militari e fortificazioni",
-    "short": "Fu la porta di accesso più antica, aperta verso sud-ovest.",
-    "long": "Porta Visnàt prendeva il nome dal rione in cui era posta. 'Vicinato' pare derivare dal modo in cui si chiamavano i primi abitanti di Caravaggio, ovvero 'vicini', residenti nel nucleo più antico della città. Sotto l'arco erano dipinte scene della vita dei Santi Fermo e Rustico. Chiamarsi 'vicini' indicava una condizione giuridica particolare. Col tempo, il termine indicò i discendenti degli originari del borgo. (fonti: Santagiuliana 1981)",
+    "name": "Rione Visnàt",
+    "type": "see",
+    "category": "Luoghi",
+    "short": "",
+    "long": "Qui si trovava Porta Visnàt, la porta più antica. 
+
+  Il toponimo, in italiano 'Vicinato', pare derivare dal modo in cui si chiamavano i primi abitanti di Caravaggio, ovvero 'vicini'. Questo termine potrebbe essere servito per distinguerne la condizione giuridica, ad esempio rispetto ai terreni circostanti, ma nel tempo finì per diventare il nome con cui venivano chiamati gli abitanti del nucleo più antico della città, ben prima che si fondesse con gli altri rioni.  
+  Quando ancora era in piedi, la porta riportava sotto il proprio arco scene della vita dei Santi Fermo e Rustico, che secondo la tradizione (non suffragata da alcuna prova) l'avrebbero valicata nel 306 d.C. per entrare nel borgo, in cui avrebbero resuscitato un morto.",
     "lat": 45.49629,
     "lon": 9.6403642,
     "links": [],
@@ -39,11 +46,13 @@
     ]
   },
   {
-    "name": "Porta Prata",
-    "type": "lost",
-    "category": "Opere militari e fortificazioni",
+    "name": "Rione Prata",
+    "type": "see",
+    "category": "Luoghi",
     "short": "",
-    "long": "Porta Prata dà il nome al rione sul quale si apre. Posto a specificazione di alcuni cognomi degli abitanti di Caravaggio nel 1272, è possibile pensare che si trattasse di un abitato esterno al borgo iniziale. 'Prata' si riferirebbe ai prati attorno all'odierna via Guzzasete. (fonti: Santagiuliana 1981)",
+    "long": "In questo luogo si apriva Porta Prata, apertura verso ovest del borgo. 
+    
+ Prata, probabilemente, è un toponimo che idicava un centro abitato esterno al borgo iniziale, Visnàt. Il toponimo 'Prata' si riferirebbe ai prati che si dovevano trovare attorno all'odierna via Guzzasete. Già nel 1272 è attestato come specificazione accanto a nomi dei propri abitanti.",
     "lat": 45.4975191,
     "lon": 9.6402782,
     "links": [],
