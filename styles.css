@@ -286,7 +286,7 @@ a:visited{
   top: calc(var(--header-h, 120px) + 10px);
 
   /* NUOVO: lascia spazio al footer + safe-area iOS */
-  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 2px);
+  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 2px) !important;
 
   width: min(360px, 92vw);
   overflow: auto;
@@ -1329,7 +1329,7 @@ html, body{
 
 /* Leaflet controls sopra footer */
 .leaflet-bottom{
-  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 10px) !important;
+  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 2px) !important;
 }
 
 /* iOS: evita rubber-band */
@@ -1352,6 +1352,7 @@ html, body{
 #openGuide *{
   pointer-events: auto !important;
 }
+
 
 
 
