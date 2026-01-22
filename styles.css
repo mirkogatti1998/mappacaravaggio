@@ -1370,9 +1370,12 @@ html, body{
   font-family: "Playfair Display", serif;
   font-weight: 700;
   letter-spacing: 0.3px;
+}
+.header-title {
   text-transform: none;
   font-variant-ligatures: common-ligatures;
 }
+
 
 
 
