@@ -1101,9 +1101,12 @@ a:visited{
     top: calc(var(--header-h) + 10px);
     z-index: 1200;
 
-    /* centratore */
-    max-width: 520px;
-    margin: 0 auto;
+  /* centratore + anti-sforamento (senza transform) */
+width: 100%;
+max-width: min(520px, calc(100vw - 24px));
+margin-left: auto;
+margin-right: auto;
+box-sizing: border-box;
 
     display: grid;
     grid-template-rows: auto auto;
@@ -1113,7 +1116,12 @@ a:visited{
     transform-origin: top center;
     transition: opacity .22s ease, transform .22s ease;
   }
-  .topbar .controls *{ pointer-events: auto; }
+.topbar .controls button,
+.topbar .controls a,
+.topbar .controls input,
+.topbar .controls select{
+  pointer-events: auto;
+}
 
   /* fila icone: griglia centrata */
   .topbar .btn-row{
@@ -1270,104 +1278,38 @@ a:visited{
     margin-top: 0;
     padding-top: 0;
   }
-}
-
-
-  .topbar{
-    background: rgba(27,20,16,.92);
-  }
-
-.controls {
-  width: min(560px, 100%);
-  margin: 0 auto;
-}
-
-@media (max-width: 640px) {
-  .controls {
-    padding: 0 12px;
-  }
-}
-
-.controls {
-  transform: translateX(-6px);
-}
-
-.btn-row.icon-bar,
-.search-row {
-  padding-left: 6px;
-}
-.controls > .btn-row.icon-bar,
-.controls > .search-row {
-  margin-left: -10px;
-}
-
-/* iOS: evita scroll/bounce che sposta l’header */
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-
-@media (max-width: 640px){
-  body{
-    position: fixed;
-    inset: 0;
-    overscroll-behavior: none;
-  }
-
-  .topbar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 5000;
-  }
-
-  /* la mappa sta sotto l’header fisso */
-  #map{
-    top: var(--header-h);
-    height: calc(100dvh - var(--header-h));
-  }
-}
-/* sposta su tutti i controlli Leaflet in basso, sopra il footer */
-.leaflet-bottom{
-  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 10px) !important;
-}
-/* =========================================================
-   LAYOUT STABILE + FOOTER FISSO (iOS friendly)
+}/* =========================================================
+   iOS + FOOTER FISSO: mappa tra header e footer (UNA VOLTA)
    ========================================================= */
-
-/* Struttura base */
-html, body {
+html, body{
   height: 100%;
   margin: 0;
   overflow: hidden;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
+/* header/footer fixed */
+.topbar{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 5000;
+}
+.footer{
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  z-index: 4000;
 }
 
-/* Header sempre visibile */
-.topbar {
+/* la mappa sta nello spazio tra header e footer */
+.layout{
   position: fixed;
-  top: 0;
+  top: var(--header-h);
+  bottom: var(--footer-h);
   left: 0;
   right: 0;
-  z-index: 5000;
-  background: rgba(27,20,16,.92);
-}
-
-/* Area mappa */
-.layout {
-  position: relative;
-  flex: 1;
   min-height: 0;
-  margin-top: var(--header-h);
-  margin-bottom: var(--footer-h);
 }
-
-#map {
+#map{
   position: absolute;
   inset: 0;
   width: 100%;
@@ -1375,36 +1317,19 @@ body {
   background: transparent;
 }
 
-/* Footer fisso */
-.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 4000;
-  background: rgba(34,26,21,.88);
+/* Leaflet controls sopra footer */
+.leaflet-bottom{
+  bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 10px) !important;
 }
 
-/* Sposta su i controlli Leaflet (tracking, zoom, ecc.) */
-.leaflet-bottom {
-  bottom: calc(var(--footer-h) + env(safe-area-inset-bottom) + 10px) !important;
-}
-
-/* Evita scroll/bounce su iOS */
-@media (max-width: 640px) {
-  body {
+/* iOS: evita rubber-band */
+@media (max-width: 640px){
+  body{
     position: fixed;
     inset: 0;
     overscroll-behavior: none;
   }
 }
-
-
-
-
-
-
-
 
 
 
