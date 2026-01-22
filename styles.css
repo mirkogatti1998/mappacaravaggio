@@ -1370,12 +1370,15 @@ h1 {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   letter-spacing: 0.2px;
+  font-size: 1.7rem;
+  color: #f3e7cf;
 }
 
 h1 {
   text-transform: none;
   font-variant-ligatures: common-ligatures;
 }
+
 
 
 
