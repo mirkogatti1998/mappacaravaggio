@@ -1352,7 +1352,18 @@ html, body{
 #openGuide *{
   pointer-events: auto !important;
 }
+.leaflet-control-attribution{
+  background: rgba(27,20,16,.85) !important;
+  color: rgba(242,233,220,.8) !important;
+  font-size: 11px !important;
+  padding: 4px 8px !important;
+  border-radius: 8px !important;
+  margin: 0 !important;
+}
 
+.leaflet-bottom{
+  bottom: 0 !important;
+}
 
 
 
