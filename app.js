@@ -9,7 +9,7 @@ const map = L.map("map", { zoomControl: false })
 
 window.addEventListener("resize", kickLeafletResize);
 window.addEventListener("orientationchange", kickLeafletResize);
-  .setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
+  map.setView(DEFAULT_VIEW.center, DEFAULT_VIEW.zoom);
 
 L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
   maxZoom: 19,
@@ -1339,6 +1339,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
+
 
 
 
