@@ -1340,7 +1340,18 @@ html, body{
     overscroll-behavior: none;
   }
 }
+/* --- HOTFIX: ripristina interazioni --- */
+@media (max-width: 640px){
+  .topbar .controls{ pointer-events: auto !important; }
+  body{ position: static !important; inset: auto !important; }
+}
 
+/* non ammazzare i click dentro ai bottoni */
+.topbar .controls button *,
+.topbar .controls a *,
+#openGuide *{
+  pointer-events: auto !important;
+}
 
 
 
