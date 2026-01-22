@@ -1284,11 +1284,6 @@ a:visited{
     background: rgba(27,20,16,.92);
   }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
-
 #map {
   position: absolute;
   top: 0;
@@ -1307,13 +1302,7 @@ html, body {
     padding: 0 12px;
   }
 }
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 900;
-}
+
 .controls {
   transform: translateX(-6px);
 }
@@ -1358,6 +1347,7 @@ html, body {
 .leaflet-bottom{
   bottom: calc(var(--footer-h, 56px) + env(safe-area-inset-bottom) + 10px) !important;
 }
+
 
 
 
