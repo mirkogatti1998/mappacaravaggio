@@ -1118,6 +1118,17 @@ box-sizing: border-box;
     transform-origin: top center;
     transition: opacity .22s ease, transform .22s ease;
   }
+  .topbar .controls button,
+.topbar .controls a,
+.topbar .controls input,
+.topbar .controls select{
+  pointer-events: auto;
+}
+
+.topbar .controls button *,
+.topbar .controls a *{
+  pointer-events: none;
+}
 .topbar .controls button,
 .topbar .controls a,
 .topbar .controls input,
