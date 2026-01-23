@@ -497,8 +497,8 @@
   
   {
     "name": "Tomba di Giovanni Moriggia",
-    "type": "hidden",
-    "category": "Tesori nascosti",
+    "type": "stories",
+    "category": "Personaggi della storia",
     "short": "",
     "long": "In questo luogo riposa Giovanni Moriggia (1796–1878). Fu pittore caravaggino attivo soprattutto in ambito religioso e decorativo, con opere diffuse in chiese della Lombardia. Proveniente da una famiglia locale, studiò e si formò nell’ambiente artistico bergamasco e milanese, sviluppando un linguaggio legato al gusto tra tardo neoclassico e primo Ottocento. È particolarmente ricordato per grandi cicli decorativi e affreschi, tra cui lavori importanti nel Santuario di Caravaggio e in edifici ecclesiastici del territorio. Parallelamente fu patriota, partecipando alla Cinque giornate di Milano del 1848. La sua presenza è ancora tangibile in città: diverse sue opere sono ancora visibili nella Pinacoteca comunale. Il busto raffigurante il grande pittore caravaggino e 'l'Arte che piange' alla sua destra sono ad opera di Rustico Soliveri.",
     "lat": 45.5003004,
@@ -508,8 +508,8 @@
   },
   {
     "name": "Tomba dei Secco",
-    "type": "hidden",
-    "category": "Tesori nascosti",
+    "type": "stories",
+    "category": "Personaggi della storia",
     "short": "Qui si trova la tomba della famiglia Secco, legata a doppio filo con la vita pubblica caravaggina. I Visconti, nel governo delle città soggette, si appoggiarono spesso a famiglie locali di rilievo. A Caravaggio individuarono questo sostegno nella famiglia dei Secco, favorita attraverso la vendita di terre e la concessione di titoli feudali. Il prestigio così acquisito permise ai Secco di esercitare una forte influenza sulla vita cittadina, pur senza detenere un potere giuridico diretto sul borgo. Alcuni membri della famiglia parteciparono a spedizioni di parte ghibellina nel XIV secolo. Durante le guerre tra Milano e Venezia, nel 1431, un esponente dei Secco tentò di consegnare Caravaggio al podestà di Bergamo, ma l’iniziativa fu denunciata da Zentilino Suardi. Marco Secco ricoprì la carica di vicario ducale all’epoca dell’Apparizione, mentre Bonincontro Secco, vicario foraneo, pose la prima pietra della chiesa del Miracolo. Giovanni e Ognibene Secco furono invece inviati a Venezia dopo la battaglia di Caravaggio. I privilegi di cui godeva la famiglia e il rifiuto di sottostare alla fiscalità cittadina alimentarono un forte risentimento popolare, che culminò il 2 febbraio 1470 con la rimozione degli stemmi dei Secco dalle tombe e il loro getto nel fango. Nel 1509 Iacopo Secco aprì le porte della città a Ludovico XII, tradendo Venezia, e venne nominato “signore di Caravaggio”. Con l’avvento degli Sforza il prestigio della famiglia iniziò progressivamente a declinare. I Secco protestarono senza successo contro il diploma di Carlo VI del 1712, che restituiva il marchesato a Bianca Maria. Nonostante la tradizione e il ruolo di primo piano nella storia locale, la famiglia Secco non esercitò mai una vera e propria signoria sul borgo.",
     "long": "",
     "lat": 45.5003926,
@@ -693,7 +693,7 @@
   {
     "name": "Palazzo Liberty",
     "type": "hidden",
-    "category": "Edifici",
+    "category": "Tesori nascosti",
     "short": "",
     "long": "",
     "lat": 45.4968363,
@@ -732,10 +732,10 @@
   },
   {
     "name": "Villa Rocchi",
-    "type": "stories",
-    "category": "Storia",
+    "type": "hidden",
+    "category": "Tesori nascosti",
     "short": "",
-    "long": "La famiglia Rocchi arrivò a Caravaggio all'inizio dell'Ottocento come proprietari di una filanda. Nel 1803 iniziarono la costruzione della villa (entrata in via Fermo Stella e giardino in via XXV Aprile), recuperando materiale dalla demolizione del vicino castello. La famiglia divenne proprietaria di terreni agricoli e altri edifici del centro. Nel 1897 fu coinvolta negli scontri con le lavoratrici delle filande: fu la prima proprietà ad accordare aumento di salario e riduzione dell'orario. La filanda chiuse dopo la Prima guerra mondiale; la villa passò nel tempo a tre famiglie proprietarie. (fonti: F. Tresoldi)",
+    "long": "",
     "lat": 45.4968052,
     "lon": 9.6404879,
     "links": [],
@@ -748,7 +748,7 @@
     "type": "see",
     "category": "Edifici",
     "short": "",
-    "long": "Dopo la demolizione definitiva della rocca, la comunità avrebbe voluto destinare l'area a un giardino comunale, ma la necessità di una sede scolastica portò alla costruzione delle scuole elementari. Progettate dall'ingegnere Carlo Bedolini, furono inaugurate l'8 dicembre 1912 e intitolate a Michelangelo Merisi. L'edificio liberty è diviso in tre corpi: fronte principale a meridione per l'ingresso d'onore e due corpi avanzati alle estremità, con ingressi femminili e maschili distanti. Fu adibito anche a ospedale militare e deposito durante le guerre mondiali e ospitò l'associazione nazionale combattenti e reduci e la biblioteca Banfi. (fonti: T. Prada)",
+    "long": "Dopo la demolizione definitiva della rocca, la comunità aveva inizialmente previsto di destinare l’area a un giardino pubblico; la necessità di una sede scolastica portò invece alla costruzione delle scuole elementari, progettate dall’ingegnere Carlo Bedolini e inaugurate l’8 dicembre 1912. L’edificio, in stile liberty, è articolato in tre corpi: il fronte principale a sud per l’ingresso d’onore e due corpi avanzati alle estremità, con ingressi separati per maschi e femmine, secondo l’uso dell’epoca. Intitolato a Michelangelo Merisi, l’edificio ebbe anche funzioni straordinarie: fu adibito a ospedale militare e deposito durante le due guerre mondiali e ospitò in seguito l’Associazione Nazionale Combattenti e Reduci e la biblioteca Banfi.",
     "lat": 45.4980761,
     "lon": 9.6407711,
     "links": [],
@@ -761,7 +761,7 @@
     "type": "see",
     "category": "Edifici",
     "short": "",
-    "long": "Nacque come chiesa di San Francesco dei Conventuali e Oratorio della Concezione della Beata Vergine (definita Santa Maria di Caravaggio in testi del 1300; proprietà degli Umiliati). L'ordine era presente nel borgo fin dal 1401; allestì la cappella nel 1616 e fu soppresso nel 1786. Con la soppressione napoleonica l'edificio passò a privati e divenne poi sede dell'orfanotrofio femminile e dell'asilo infantile. Attualmente ospita la banda musicale. (fonti: T. Santagiuliana)",
+    "long": "L’edificio nacque come chiesa di San Francesco dei Conventuali e Oratorio della Concezione della Beata Vergine, indicata in documenti trecenteschi come Santa Maria di Caravaggio e appartenente agli Umiliati, presenti nel borgo già dal 1401. L’ordine allestì la cappella nel 1616 e fu soppresso nel 1786. Con le soppressioni napoleoniche l’edificio passò a privati e fu poi destinato a orfanotrofio femminile e quindi ad asilo infantile Umberto I. Oggi ospita la banda musicale cittadina. L’edificio conserva tracce della sua originaria funzione religiosa e testimonia il passaggio da spazio sacro a luogo educativo e civile.",
     "lat": 45.4979765,
     "lon": 9.6425072,
     "links": [],
@@ -775,7 +775,7 @@
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Posta inizialmente fuori dal tracciato del borgo originario, potrebbe essere una ricostruzione su fondamenta di un luogo di culto già presente nella 'villa quae dicitur Caravagio' del 962. L'intitolazione ai Santi Fermo e Rustico potrebbe rifarsi ad antichi culti cristiani milanesi, anche in relazione alla leggenda del passaggio dei santi nel IV secolo. La facciata, ristrutturata nel 1429, è tripartita e slanciata da cinque guglie. Presenta rosone centrale, due finestre circolari e tre portoni. Gli interni furono rimodernati in stile barocco fra 1777 e 1798 (Fabrizio Galliari). La pianta a croce latina ha tre navate e ampie cappelle laterali. (fonti: T. Santagiuliana)",
+    "long": "La chiesa parrocchiale dei Santi Fermo e Rustico costituisce il principale edificio religioso del centro storico di Caravaggio ed è uno dei più antichi luoghi di culto della comunità. Posta inizialmente fuori dal primo nucleo fortificato del borgo, potrebbe sorgere su un’area sacra già frequentata in età altomedievale: una chiesa è infatti probabile già nella villa quae dicitur Caravagio menzionata in un documento del 962. L’intitolazione ai santi Fermo e Rustico, martiri veronesi, richiama antichi culti cristiani diffusi nell’area lombarda e milanese; la tradizione locale, priva di riscontri storici, colloca il loro passaggio a Caravaggio nel IV secolo. L’edificio attuale è il risultato di una lunga serie di ampliamenti e trasformazioni. La facciata, rinnovata nel 1429, presenta un impianto tripartito con tre portali, rosone centrale e due finestre circolari, ed è caratterizzata da una forte tensione verticale sottolineata da cinque guglie gotiche che ne accentuano lo slancio monumentale. Questa sistemazione risale al periodo di maggiore sviluppo urbano del borgo, quando la chiesa venne inglobata progressivamente entro il perimetro delle mura. \nNel corso del Settecento l’interno fu oggetto di un radicale rinnovamento in stile barocco. Tra il 1777 e il 1798 l’architetto e scenografo Fabrizio Galliari ridisegnò l’apparato decorativo, conferendo alla chiesa l’aspetto attuale: stucchi, cornici, altari laterali e un impianto spaziale volto a esaltare la teatralità liturgica. La pianta è a croce latina con tre navate, scandite da pilastri che sorreggono arcate ampie, e con numerose cappelle laterali dedicate a confraternite e devozioni cittadine. Tra queste, la Cappella del Santissimo Sacramento, detta tradizionalmente bramantesca, è stata realizzata nei primi decenni del XVI secolo. La tradizione la vorrebbe attribuita al Bramante, ma non esiste alcun riscontro",
     "lat": 45.496783,
     "lon": 9.6451394,
     "links": [],
@@ -790,7 +790,7 @@
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Risalente al 1540, presenta un'architettura tipica del periodo lombardo bramantesco. Pianta esagonale, portico sui tre lati meridionali e abitazioni civili sugli altri. Internamente si apprezza una volta a cupola e una decorazione ancora settecentesca. In origine pare fosse dedicata a Santa Caterina e Santa Lucia; in seguito la dedica divenne Santa Liberata, forse per un voto contro una pestilenza. Tradizione: si accende un cero nell'oratorio e, quando si spegne, l'anima del malato può liberarsi. Il 18 gennaio, nel rione Seriola, si festeggia la santa. (fonti: P. Tirloni)",
+    "long": "L’oratorio, risalente al 1540, presenta un’architettura tipica del rinascimento lombardo di area bramantesca. Ha pianta esagonale, portico su tre lati e abitazioni civili sugli altri. All’interno si conserva una volta a cupola e una decorazione di gusto settecentesco. In origine pare fosse dedicato a Santa Caterina e Santa Lucia; successivamente assunse il titolo di Santa Liberata, probabilmente in seguito a un voto legato a un’epidemia. La tradizione popolare vuole che l’accensione di un cero nell’oratorio simboleggi la liberazione dell’anima del malato al momento dello spegnimento. Il 18 gennaio, nel rione Seriola, si celebra ancora la festa della santa.",
     "lat": 45.5008403,
     "lon": 9.6450109,
     "links": [],
@@ -803,7 +803,7 @@
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Il monastero, prima degli Umiliati, passò al Seminario di Milano e nel 1603 fu assegnato ai Cistercensi. Su richiesta del marchese Muzio II e del cardinale Federico Borromeo venne rinnovato e intitolato a San Giovanni Battista (prima Santi Pietro e Paolo; ancora prima Santa Maria in Prata). Fu soppresso nel 1798 sotto i francesi. Pare che nel gennaio 1571 qui si sia celebrato il matrimonio fra Fermo Merisi e Lucia Aratori, genitori del Caravaggio. La piazzetta antistante favorisce la visione della facciata stretta tra muri laterali. L'aula interna è leggermente rettangolare; presbiterio breve, coro semiottagonale e altare barocco in marmi intarsiati. (fonti: P. Tirloni)",
+    "long": "Il complesso passò dagli Umiliati al Seminario di Milano e nel 1603 fu affidato ai Cistercensi. Su richiesta del marchese Muzio II Sforza e del cardinale Federico Borromeo, l’edificio venne rinnovato e intitolato a San Giovanni Battista (prima ai Santi Pietro e Paolo, e in origine a Santa Maria in Prata). Fu soppresso nel 1798 in età napoleonica. Secondo la tradizione, nel gennaio 1571 vi fu celebrato il matrimonio di Fermo Merisi e Lucia Aratori, genitori di Michelangelo Merisi detto il Caravaggio. La chiesa presenta una facciata compressa tra muri laterali che ne accentuano la verticalità; l’interno ha aula leggermente rettangolare, presbiterio breve, coro semiottagonale e altare barocco in marmi intarsiati.",
     "lat": 45.4960398,
     "lon": 9.6440038,
     "links": [],
@@ -812,11 +812,11 @@
     ]
   },
   {
-    "name": "Sant'Eusebio",
+    "name": "Sant'Eusebio e cimitero monumentale",
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Già nel 1624 è citato un oratorio in Luoghi Sant'Eusebio. Il terreno accolse molte vittime della peste del 1630 e nel 1724 fu luogo di morte dell'eremita Bartolomeo Marchetti. Il 24 novembre 1788 si ebbe la benedizione e la prima sepoltura, con conseguente progressivo abbandono delle sepolture in Santi Fermo e Rustico. Nel XIX secolo si ampliò il camposanto e si diede un aspetto monumentale alla chiesa; progetto affidato all'architetto Carlo Renzanigo. L'edificio neoclassico presenta atrio a tre arcate e interno con cupola e decorazioni coerenti allo stile. (fonti: F. Tadini)",
+    "long": "Già nel 1624 è attestato un oratorio in località Sant’Eusebio. Il terreno accolse molte vittime della peste del 1630 e nel 1724 vi morì l’eremita Bartolomeo Marchetti. Il 24 novembre 1788 ebbero luogo la benedizione e la prima sepoltura ufficiale, segnando il progressivo abbandono del cimitero presso la parrocchiale dei Santi Fermo e Rustico. Nel corso dell’Ottocento il camposanto venne ampliato e si conferì alla chiesa un aspetto monumentale su progetto dell’architetto Carlo Renzanigo. L’edificio, in stile neoclassico, presenta un atrio a tre arcate e un interno con cupola e decorazioni coerenti con il linguaggio architettonico del tempo.",
     "lat": 45.50014,
     "lon": 9.6542851,
     "links": [],
@@ -827,7 +827,7 @@
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "La chiesa attuale risale al 1626, probabilmente su disegno di Fabio Mangone. Pianta quasi quadrata e croce greca appena accennata; accanto all'ex monastero delle Agostiniane, presenti dal 1480. Il monastero fu chiuso nel 1805. La facciata è spartita da quattro lesene, con cornicione e modanature; portone con arco spezzato e finestrone illuminano l'interno. (fonte: P. Tirloni)",
+    "long": "La chiesa attuale risale al 1626, probabilmente su progetto di Fabio Mangone, e sorge accanto all’ex monastero delle Agostiniane, presenti a Caravaggio fin dal 1480. Il monastero venne soppresso nel 1805. La pianta è quasi quadrata, con una croce greca appena accennata. La facciata è scandita da quattro lesene, con cornicione e modanature; il portale con arco spezzato e un ampio finestrone illuminano l’interno. L’edificio costituisce un significativo esempio di architettura religiosa seicentesca legata alla presenza monastica femminile in città.",
     "lat": 45.4979614,
     "lon": 9.6451978,
     "links": [],
@@ -840,7 +840,7 @@
     "type": "see",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "L'attuale cappelletta è ciò che rimane di una piccola chiesa (nel 1624 misurava almeno 50 m² e vi era un eremita). I campi attorno furono scelti per accogliere molte vittime della peste del 1630, insieme a San Valeriano e Sant'Eusebio. L'iscrizione riporta 3666 morti, ma è più probabile circa 1500. (fonti: P. Tirloni)",
+    "long": "L’attuale cappelletta è ciò che resta di una piccola chiesa campestre, che nel 1624 misurava almeno 50 m² ed era abitata da un eremita. L’area circostante venne utilizzata come luogo di sepoltura durante la peste del 1630, insieme alle zone di San Valeriano e Sant’Eusebio, per accogliere le numerose vittime dell’epidemia. Un’iscrizione ricorda 3666 morti, cifra probabilmente simbolica: le stime storiche indicano un numero più realistico attorno ai 1500 decessi. Il sito conserva così la memoria di uno dei momenti più drammatici della storia sanitaria di Caravaggio.",
     "lat": 45.4845043,
     "lon": 9.6432737,
     "links": [],
@@ -851,7 +851,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "All'angolo fra via Guzzasete e via XXIV Maggio era posta Santa Maria fuori Porta Prata. La vicinanza alla rocca fa pensare che fosse la chiesa dell'antico abitato di Prata. Nel 1663 venne ricostruita e dedicata a Santa Maria della Neve. (fonte: P. Tirloni)",
+    "long": "All’angolo tra via Guzzasete e via XXIV Maggio sorgeva la chiesa di Santa Maria fuori Porta Prata, in prossimità della rocca medievale. La sua posizione fa supporre che fosse la chiesa dell’antico abitato di Prata, uno dei nuclei originari del borgo. Nel 1663 l’edificio venne ricostruito e dedicato a Santa Maria della Neve. In seguito scomparve con le trasformazioni urbanistiche dell’area, ma la sua memoria è conservata nella documentazione storica.",
     "lat": 45.49741,
     "lon": 9.6391681,
     "links": [],
@@ -864,7 +864,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Costruita dopo il 1760 con materiale ricavato dalla rocca, forse per una devozione popolare preesistente. Rivolta a levante, aveva facciata sagomata e portale sormontato da finestrone; accesso da gradinata semicircolare. Fu demolita nel 1920 per valorizzare le Scuole Merisi; era già obsoleta e usata come deposito e laboratorio per fuochi artificiali. Il 2 gennaio si teneva la festa di San Defendente (benedizione di cavalli e asini) e il 9 febbraio devozione a Santa Apollonia contro il mal di denti. (fonti: P. Tirloni)",
+    "long": "La chiesa di San Defendente fu costruita dopo il 1760 utilizzando materiale proveniente dalla demolizione della rocca. Sorgeva con orientamento a levante e presentava una facciata sagomata con portale sormontato da un finestrone e accesso tramite una gradinata semicircolare. Era legata a una devozione popolare forse più antica e ospitava un laboratorio per fuochi artificiali. Fu demolita nel 1920 per valorizzare l’area delle Scuole Merisi. Il 2 gennaio si svolgeva la benedizione degli animali da lavoro, mentre il 9 febbraio si onorava Santa Apollonia contro il mal di denti.",
     "lat": 45.497775,
     "lon": 9.6402093,
     "links": [],
@@ -875,7 +875,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Oratorio legato alla Confraternita di San Giovanni Decollato, che assisteva carcerati e condannati a morte e consolava gli afflitti. I Cistercensi vi seppellivano i giustiziati. Si trovava nello stabile dove oggi c'è la farmacia Ambiveri, vicino al palazzo della Marchesa. (fonti: P. Tirloni)",
+    "long": "Oratorio legato alla Confraternita di San Giovanni Decollato, che aveva il compito di assistere i carcerati e i condannati a morte. I monaci cistercensi vi seppellivano i giustiziati. La chiesa si trovava nell’area fino a poco tempo fa occupata dalla farmacia Ambiveri, nei pressi del Palazzo della Marchesa.",
     "lat": 45.4969814,
     "lon": 9.6442453,
     "links": [],
@@ -888,7 +888,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Via dei Capuccini prende il nome dalla Luoghi 'ai Capuccini', dove sorgevano chiesa e convento di San Pietro dei Cappuccini. Il convento nacque quando Venezia, per l'interdetto del 1607, scacciò i Cappuccini: Caravaggio ne ospitò alcuni prima in Santa Elisabetta e poi nel convento fondato nel 1608. La soppressione avvenne a fine Settecento; le spoglie dei frati furono traslate in San Giovanni Decollato. L'edificio divenne casa padronale e poi orfanotrofio maschile; oggi è dimora privata. (fonti: P. Tirloni)",
+    "long": "Via dei Capuccini prende il nome dalla località detta 'ai Capuccini', dove sorgevano chiesa e convento di San Pietro dei Cappuccini. Il convento nacque dopo l’interdetto veneziano del 1607, che costrinse i frati a lasciare Venezia: Caravaggio li accolse dapprima in Santa Elisabetta e poi nel convento fondato nel 1608. La soppressione avvenne alla fine del Settecento; le spoglie dei frati furono traslate nella chiesa di San Giovanni Decollato. L’edificio divenne in seguito casa padronale e poi orfanotrofio maschile; oggi è una residenza privata.",
     "lat": 45.5049623,
     "lon": 9.6467034,
     "links": [],
@@ -899,7 +899,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "L'edificio di culto in via San Carlo fu originariamente dedicato a San Pietro, appartenendo agli Umiliati. Con la soppressione dell'ordine fu intitolato all'Assunzione della Vergine e passò al Seminario Arcivescovile di Milano. Col tempo si sovrappose la dedica a San Carlo, anche in relazione al culto legato alla memoria di Carlo Borromeo. L'oratorio fu usato per istruzione catechistica e per le vacanze del Rettore del Seminario fino al 1866; fu chiuso al culto e demolito nel 1909. Permane il ricordo nella toponomastica e nel teatro Cavenaghi, spesso detto 'teatro San Carlo'. (fonti: P. Tirloni)",
+    "long": "L’edificio di culto situato in via San Carlo era originariamente dedicato a San Pietro ed appartenente agli Umiliati. Dopo la soppressione dell’ordine fu intitolato all’Assunzione della Vergine e passò al Seminario Arcivescovile di Milano. Con il tempo prevalse la dedicazione a San Carlo, in relazione al culto borromaico. L’oratorio fu utilizzato per l’istruzione catechistica e come luogo di villeggiatura del Rettore del Seminario fino al 1866. Fu demolito nel 1909; ne resta memoria nella toponomastica e nel teatro Cavenaghi, oggi chiamato, appunto, ‘teatro San Carlo’.",
     "lat": 45.4970338,
     "lon": 9.6456575,
     "links": [],
@@ -910,7 +910,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Dedicata a San Rocco e San Sebastiano, si trovava di fronte a Porta Visnàt. L'oratorio venne eretto il 24 aprile 1617, ma la chiesetta doveva essere più antica (legata a pestilenze). Detta San Rocchetto o San Rocco fuori le Mura per distinguerla da San Rocco in via Moietta. (fonti: P. Tirloni)",
+    "long": "La chiesa, dedicata a San Rocco e San Sebastiano, sorgeva di fronte a Porta Visnàt. L’oratorio venne edificato ufficialmente il 24 aprile 1617, ma probabilmente esisteva una struttura precedente legata alle epidemie. Era detta San Rocchetto o San Rocco fuori le Mura per distinguerla dall’omonima chiesa interna al borgo. Il culto era connesso alla protezione contro la peste.",
     "lat": 45.4959071,
     "lon": 9.6395145,
     "links": [],
@@ -923,7 +923,7 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Detto 'S. Rocchi intra oppidum' per distinguerlo da quello in via Rocchetto, si trovava al posto del Cinema Merisi con facciata verso via Moietta. Resistette qualche decennio dopo la soppressione della Confraternita (1788), poi fece posto a un teatrino e in seguito al Cinema Merisi. (fonti: P. Tirloni)",
+    "long": "Nota come ‘San Rocco intra oppidum’ per distinguerla dall’oratorio esterno, la chiesa si trovava nell’area oggi occupata dal Cinema Merisi, con facciata rivolta verso via Moietta. Sopravvisse per alcuni decenni dopo la soppressione della confraternita nel 1788, poi fu sostituita da un teatrino e successivamente dal cinema.",
     "lat": 45.4967815,
     "lon": 9.6429278,
     "links": [],
@@ -934,13 +934,197 @@
     "type": "lost",
     "category": "Chiese e monasteri",
     "short": "",
-    "long": "Chiesa campestre intitolata a San Valeriano (forse anche San Tiburzio), capace di accogliere almeno 200 fedeli. Qui furono inumate molte vittime della peste del 1630: nei pressi dell'edificio vi era uno dei cimiteri del borgo. (fonti: P. Tirloni)",
+    "long": "Chiesa campestre dedicata a San Valeriano (forse anche a San Tiburzio), aveva una capienza di circa 200 fedeli. Durante la peste del 1630 l’area fu utilizzata come luogo di sepoltura per molte vittime dell’epidemia, costituendo uno dei cimiteri straordinari del borgo.",
     "lat": 45.4937424,
     "lon": 9.6473246,
     "links": [],
     "imgs": []
   },
+ 
+ {
+    "name": "Pizziccheria di Banfi",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4969867,
+    "lon": 9.6445605,
+    "links": [],
+    "imgs": [
+      "img/pizzicheria1.jpg"
+    ]
+  },
   {
+    "name": "Via, veritas et vita",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "Scultura di Enrico Pancera commissionata per decorare la tomba della famiglia Merisio.",
+    "lat": 45.500328,
+    "lon": 9.6550739,
+    "links": [],
+    "imgs": []
+  },
+  
+  {
+    "name": "Funerale di campagna",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "Scultura di Enrico Pancera per la tomba della famiglia Bacchetta.",
+    "lat": 45.4999681,
+    "lon": 9.6551431,
+    "links": [],
+    "imgs": []
+  },
+  {
+    "name": "L'Angelo che bacia il Cristo crocifisso",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "La scultura, commissionata per la tomba della famiglia Dominoni, è di Rustico Solivero.",
+    "lat": 45.500329,
+    "lon": 9.655141,
+    "links": [],
+    "imgs": []
+  },
+   {
+    "name": "Facciata a fantasia geometrica",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4979574,
+    "lon": 9.6443437,
+    "links": [],
+    "imgs": []
+  },
+  
+  {
+    "name": "Ponticello di piazza Castello",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4983797,
+    "lon": 9.6414755,
+    "links": [],
+    "imgs": ["img/ponticello1.JPEG",
+    "img/ponticello2.JPEG"
+    ]
+  },
+  {
+    "name": "Murale del Caravaggio",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4983958,
+    "lon": 9.6408536,
+    "links": [],
+    "imgs": [
+      "img/murale1.JPEG"
+    ]
+  },
+  {
+    "name": "Il fossato",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4991517,
+    "lon": 9.6458272,
+    "links": [],
+    "imgs": [
+      "img/roggia1.jpeg"
+    ]
+  },
+  {
+    "name": "Lo scolaro",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4979807,
+    "lon": 9.6410788,
+    "links": [],
+    "imgs": [
+      "img/scolaro1.JPEG"
+    ]
+  },
+  {
+    "name": "Portone con putti",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4982542,
+    "lon": 9.6432385,
+    "links": [],
+    "imgs": []
+  },
+  {
+    "name": "Circonvallazione XXV Aprile",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4970757,
+    "lon": 9.6403948,
+    "links": [],
+    "imgs": ["img/xxv1.jpg"]
+  },
+  {
+    "name": "Affresco di San Michele Arcangelo",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4985653,
+    "lon": 9.6432814,
+    "links": [],
+    "imgs": [
+      "img/sanmichele1.jpg"
+    ]
+  },
+  {
+    "name": "Affresco della Madonna di Caravaggio",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4992752,
+    "lon": 9.6447781,
+    "links": [],
+    "imgs": [
+      "img/affrescoapparizione1.jpg"
+    ]
+  },
+  {
+    "name": "Roggia Spiranella",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4997771,
+    "lon": 9.645566,
+    "links": [],
+    "imgs": [
+      "img/spiranella.jpeg"
+    ]
+  },
+     {
+    "name": "Museo storico dei Combattenti e Reduci",
+    "type": "see",
+    "category": "Museo",
+    "short": "",
+    "long": "",
+    "lat": 45.4926032,
+    "lon": 9.6407647,
+    "links": [],
+    "imgs": []
+  },
+   {
     "name": "Teatro San Carlo",
     "type": "see",
     "category": "Edifici",
@@ -1039,214 +1223,6 @@
     "lon": 9.6350577,
     "links": [],
     "imgs": ["img/maria1.JPEG"]
-  },
- {
-    "name": "Pizziccheria di Banfi",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4969867,
-    "lon": 9.6445605,
-    "links": [],
-    "imgs": [
-      "img/pizzicheria1.jpg"
-    ]
-  },
-  {
-    "name": "Via, veritas et vita",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "Scultura di Enrico Pancera commissionata per decorare la tomba della famiglia Merisio.",
-    "lat": 45.500328,
-    "lon": 9.6550739,
-    "links": [],
-    "imgs": []
-  },
-  
-  {
-    "name": "Funerale di campagna",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "Scultura di Enrico Pancera per la tomba della famiglia Bacchetta.",
-    "lat": 45.4999681,
-    "lon": 9.6551431,
-    "links": [],
-    "imgs": []
-  },
-  {
-    "name": "L'Angelo che bacia il Cristo crocifisso",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "La scultura, commissionata per la tomba della famiglia Dominoni, è di Rustico Solivero.",
-    "lat": 45.500329,
-    "lon": 9.655141,
-    "links": [],
-    "imgs": []
-  },
-  {
-    "name": "Monumento ai caduti",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.5003864,
-    "lon": 9.6540635,
-    "links": [],
-    "imgs": []
-  },
-  {
-    "name": "Monumento ai caduti",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.499864,
-    "lon": 9.6540688,
-    "links": [],
-    "imgs": []
-  },
-  {
-    "name": "Facciata a fantasia geometrica",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4979574,
-    "lon": 9.6443437,
-    "links": [],
-    "imgs": []
-  },
-  
-  {
-    "name": "Ponticello di piazza Castello",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4983797,
-    "lon": 9.6414755,
-    "links": [],
-    "imgs": ["img/ponticello1.JPEG",
-    "img/ponticello2.JPEG"
-    ]
-  },
-  {
-    "name": "Murale del Caravaggio",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4983958,
-    "lon": 9.6408536,
-    "links": [],
-    "imgs": [
-      "img/murale1.JPEG"
-    ]
-  },
-  {
-    "name": "Il fossato",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4991517,
-    "lon": 9.6458272,
-    "links": [],
-    "imgs": [
-      "img/roggia1.jpeg",
-      "img/roggia2.jpg",
-      "img/roggia3.JPEG",
-      "img/roggia4.jpg"
-    ]
-  },
-  {
-    "name": "Lo scolaro",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4979807,
-    "lon": 9.6410788,
-    "links": [],
-    "imgs": [
-      "img/scolaro1.JPEG"
-    ]
-  },
-  {
-    "name": "Portone con putti",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4982542,
-    "lon": 9.6432385,
-    "links": [],
-    "imgs": []
-  },
-  {
-    "name": "Circonvallazione XXV Aprile",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4970757,
-    "lon": 9.6403948,
-    "links": [],
-    "imgs": ["img/xxv1.jpg"]
-  },
-  {
-    "name": "Affresco di San Michele Arcangelo",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4985653,
-    "lon": 9.6432814,
-    "links": [],
-    "imgs": [
-      "img/sanmichele1.jpg"
-    ]
-  },
-  {
-    "name": "Affresco della Madonna di Caravaggio",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4992752,
-    "lon": 9.6447781,
-    "links": [],
-    "imgs": [
-      "img/affrescoapparizione1.jpg"
-    ]
-  },
-  {
-    "name": "Roggia Spiranella",
-    "type": "hidden",
-    "category": "Tesori nascosti",
-    "short": "",
-    "long": "",
-    "lat": 45.4997771,
-    "lon": 9.645566,
-    "links": [],
-    "imgs": [
-      "img/spiranella.jpeg"
-    ]
-  },
-     {
-    "name": "Museo storico dei Combattenti e Reduci",
-    "type": "see",
-    "category": "Museo",
-    "short": "",
-    "long": "",
-    "lat": 45.4926032,
-    "lon": 9.6407647,
-    "links": [],
-    "imgs": []
   },
   {
     "name": "I martiri della Resistenza",
