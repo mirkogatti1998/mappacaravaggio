@@ -147,8 +147,8 @@
     "category": "Opere militari e fortificazioni",
     "short": "",
     "long": "La prima citazione di Caravaggio, nel 962, lo definisce come villa, termine che indicava un centro abitato privo di mura difensive. Un sistema di fortificazioni venne probabilmente realizzato entro il XIII secolo, favorendo l’afflusso di popolazione dalle campagne circostanti in cerca di protezione. La cinta muraria seguiva in gran parte l’andamento rettangolare delle rogge, con un’eccezione nel rione Seriola, dove si allungava in un vertice più appuntito. Nel XIV secolo, durante la dominazione viscontea, le difese furono potenziate con mura turrite e un doppio fossato, attraversato dalle quattro porte principali. Nei secoli successivi le strutture andarono incontro a un progressivo degrado, fino alla quasi totale scomparsa; oggi ne restano solo pochi tratti visibili nell’area di Porta Nuova e sporadici ritrovamenti emersi durante scavi.",
-    "lat": 45.4953035,
-    "lon": 9.6440542,
+    "lat": 45.4953146,
+    "lon": 9.6434872,
     "links": [],
     "imgs": []
   },
@@ -173,7 +173,6 @@
     "lon": 9.6437214,
     "links": [],
     "imgs": [
-      "img/trigramma1.jpg",
       "img/trigramma2.jpg"
     ]
   },
@@ -1045,12 +1044,23 @@
     "category": "Tesori nascosti",
     "short": "",
     "long": "",
-    "lat": 45.4979807,
-    "lon": 9.6410788,
+    "lat": 45.4978396,
+    "lon": 9.6411128,
     "links": [],
     "imgs": [
       "img/scolaro1.JPEG"
     ]
+  },
+   {
+    "name": "Stemma incastonato",
+    "type": "hidden",
+    "category": "Tesori nascosti",
+    "short": "",
+    "long": "",
+    "lat": 45.4990922,
+    "lon": 9.6441035,
+    "links": [],
+    "imgs": ["img/stemma.jpeg"]
   },
   {
     "name": "Portone con putti",
@@ -1214,6 +1224,28 @@
     "imgs": []
   },
   {
+    "name": "Strage alla Veneta Mineraria",
+    "type": "stories",
+    "category": "Storia",
+    "short": "",
+    "long": "",
+    "lat": 45.4927599,
+    "lon": 9.6336019,
+    "links": [],
+    "imgs": []
+  },
+  {
+    "name": "Confraternita del Santissimo Sacramento",
+    "type": "see",
+    "category": "Chiese e monasteri",
+    "short": "",
+    "long": "",
+    "lat": 45.4964796,
+    "lon": 9.6452058,
+    "links": [],
+    "imgs": []
+  },
+  {
     "name": "Giardino di Maria",
     "type": "see",
     "category": "Natura",
@@ -1223,6 +1255,28 @@
     "lon": 9.6350577,
     "links": [],
     "imgs": ["img/maria1.JPEG"]
+  },
+   {
+    "name": "Pinacoteca Civica"
+    "type": "see",
+    "category": "Museo",
+    "short": "",
+    "long": "",
+    "lat": 45.4972314,
+    "lon": 9.6440119,
+    "links": [],
+    "imgs": []
+  },
+  {
+    "name": "Achille Stuani"
+    "type": "stories",
+    "category": "Personaggi della storia",
+    "short": "",
+    "long": "",
+    "lat": 45.4977996,
+    "lon": 9.6415805,
+    "links": [],
+    "imgs": []
   },
   {
     "name": "I martiri della Resistenza",
