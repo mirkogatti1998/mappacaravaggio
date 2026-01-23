@@ -1123,6 +1123,28 @@
       "img/spiranella.jpeg"
     ]
   },
+  {
+    "name": "Fontanile Brancaleone",
+    "type": "see",
+    "category": "Natura",
+    "short": "La Riserva naturale del Fontanile Brancaleone, in località Gavazzolo presso Masano, è una delle aree naturalistiche più importanti del territorio. Istituita come area protetta dalla Regione Lombardia nel 1984 e riconosciuta come Sito di Importanza Comunitaria, si trova a nord di Caravaggio, al confine con Pagazzano, presso la cascina Gavazzolo. Da qui nasce la Roggia Basso. La riserva si estende per oltre 10 ettari e comprende le teste del fontanile, il canale di deflusso e il bosco umido circostante. Pur essendo di origine artificiale, il fontanile costituisce oggi un ecosistema di grande valore biologico, soggetto a variazioni naturali di portata. Vi si osservano numerose specie di uccelli, anfibi e pesci; di particolare interesse scientifico è la presenza di crostacei anfipodi del genere Niphargus, tra cui specie descritte proprio a partire da studi condotti in quest’area. Secondo la tradizione, le sue acque alimentavano in antico il lago Gerundo.",
+    "long": "",
+    "lat": 45.5197618,
+    "lon": 9.6660446,
+    "links": [],
+    "imgs": []
+  },
+  {
+    "name": "Sentiero dei Livelli (Capralba)",
+    "type": "see",
+    "category": "Natura",
+    "short": "Il sentiero si trova nel comune di Capralba, già provincia di Cremona. Costeggiando la Roggia Rino si raggiunge uno spiazzo di maggiori dimensione alla diramazione della Roggia Nodello dalla Roggia Rino. Qui è possibile ammirare la piccola cascata che si trova poco dopo il fontanile dei Livelli. Il sentiero è stato inaugurato nel maggio del 2008, dopo che l'area è stata donata al comune alle sorelle Angela, Teresina e Maria Merati.",
+    "long": "",
+    "lat": 45.4458007,
+    "lon": 9.6502144,
+    "links": [],
+    "imgs": []
+  },
      {
     "name": "Museo storico dei Combattenti e Reduci",
     "type": "see",
@@ -1157,17 +1179,7 @@
     "imgs": []
   },
    
-  {
-    "name": "Sentiero dei Livelli (Capralba)",
-    "type": "see",
-    "category": "Natura",
-    "short": "",
-    "long": "",
-    "lat": 45.4458007,
-    "lon": 9.6502144,
-    "links": [],
-    "imgs": []
-  },
+  
   {
     "name": "Fontanile Gaverine (Misano di Gera d'Adda)",
     "type": "see",
@@ -1201,17 +1213,7 @@
     "links": [],
     "imgs": []
   },
-  {
-    "name": "Fontanile Brancaleone",
-    "type": "see",
-    "category": "Natura",
-    "short": "",
-    "long": "",
-    "lat": 45.5197618,
-    "lon": 9.6660446,
-    "links": [],
-    "imgs": []
-  },
+  
   {
     "name": "Fontanili Albariti (Caravaggio/Capralba)",
     "type": "see",
