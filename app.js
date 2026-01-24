@@ -1261,7 +1261,7 @@ async function loadItinerari(){
           f.properties?.name || f.properties?.Nome || f.properties?.title || "Itinerario"
         );
 
-        const palette = ["#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E", "#9B8CFF", "#FFB020", "#6BA368", "#B85C38", "5F7DA3", "8E6C8A", "A3A847", "3F8F8B", "#C27C2C", "#7A5C3E"];
+        const palette = ["#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E", "#9B8CFF", "#FFB020", "#6BA368", "#B85C38", "#5F7DA3", "#8E6C8A", "#A3A847", "#3F8F8B", "#C27C2C", "#7A5C3E"];
 
         let h = 0;
         for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
@@ -1406,6 +1406,7 @@ function showServicesDisclaimer(){
     };
   }
 }
+
 
 
 
