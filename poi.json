@@ -1,5 +1,29 @@
 [
   {
+    "name": "I vicoli di Caravaggio",
+    "type": "see-MANCANTE",
+    "category": "Luoghi-MANCANTE",
+    "short": "",
+    "long": "---",
+    "lat": 45.4954766,
+    "lon": 9.6421103,
+    "links": [],
+    "imgs": ["img/vicoli3.JPEG"]
+  },
+  {
+    "name": "Teatro San Carlo",
+    "type": "see-MANCANTE",
+    "category": "Edifici-MANCANTE",
+    "short": "",
+    "long": "",
+    "lat": 45.4970378,
+    "lon": 9.6454676,
+    "links": [],
+    "imgs": []
+  },
+   
+  
+  {
     "name": "Rione Fulser",
     "type": "see",
     "category": "Luoghi",
@@ -152,17 +176,7 @@
     "links": [],
     "imgs": []
   },
-  {
-    "name": "I vicoli di Caravaggio",
-    "type": "see",
-    "category": "Luoghi",
-    "short": "",
-    "long": "---",
-    "lat": 45.4954766,
-    "lon": 9.6421103,
-    "links": [],
-    "imgs": ["img/vicoli3.JPEG"]
-  },
+  
   {
     "name": "Trigramma di Cristo",
     "type": "hidden",
@@ -1191,17 +1205,7 @@
   },
 
   
-   {
-    "name": "Teatro San Carlo",
-    "type": "see",
-    "category": "Edifici",
-    "short": "",
-    "long": "",
-    "lat": 45.4970378,
-    "lon": 9.6454676,
-    "links": [],
-    "imgs": []
-  },
+   
    {
     "name": "Maria Fedeli e la scrittrice Neera",
     "type": "stories",
