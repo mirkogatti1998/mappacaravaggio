@@ -884,7 +884,13 @@ function renderMarkers({ shouldZoom = false } = {}) {
 
   filtered.forEach(p => {
     const pretty = getPrettyDistance(p);
-    const icon = categoryIcons[p.category] || defaultIcon;
+   const icon = getIconForFeature({
+  properties: {
+    categoria: p.category,
+    type: p.type
+  }
+});
+
 
     const m = L.marker([p.lat, p.lon], { icon }).addTo(map);
     m.__poi = p;
@@ -1372,6 +1378,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
+
 
 
 
