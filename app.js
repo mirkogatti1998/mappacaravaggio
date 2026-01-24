@@ -1394,18 +1394,20 @@ if ("serviceWorker" in navigator) {
   });
 }
 function showServicesDisclaimer(){
-  if (sessionStorage.getItem("servicesDisclaimerSeen")) return;
-
   const el = document.getElementById("servicesDisclaimer");
   if (!el) return;
 
   el.classList.remove("hidden");
 
-  document.getElementById("closeDisclaimer").onclick = () => {
-    el.classList.add("hidden");
-    sessionStorage.setItem("servicesDisclaimerSeen", "yes");
-  };
+  const btn = document.getElementById("closeDisclaimer");
+  if (btn) {
+    btn.onclick = () => {
+      el.classList.add("hidden");
+    };
+  }
 }
+
+
 
 
 
