@@ -572,13 +572,14 @@ const categoryIcons = {
   "Opere militari e fortificazioni": makeIcon("icons/militari.png"),
   "Personaggi della storia": makeIcon("icons/personaggi.png"),
   "Storia": makeIcon("icons/storia.png"),
-  "Tesori nascosti": makeIcon("icons/tesori.png"),
-  "Edifici": makeIcon("icons/edifici.png"),
+  "Tesori nascosti": makeIcon("icons/tesorinascosti.png"),
+  "Edifici": makeIcon("icons/edificio.png"),
   "DAE": makeIcon("icons/dae.png"),
-  "Stazione": makeIcon("icons/stazioni.png"),
+  "Stazione del treno": makeIcon("icons/treno.png"),
+  "Stazione del bus": makeIcon("icons/bus.png"),
   "Parcheggio": makeIcon("icons/parcheggio.png"),
   "Località": makeIcon("icons/localita.png"),
-  "Luoghi": makeIcon("icons/quotidiano.png"),
+  "Luoghi": makeIcon("icons/localita.png"),
   "Emergenza": makeIcon("icons/emergenza.png"),
 };
 const defaultIcon = makeIcon("icons/default.png");
