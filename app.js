@@ -720,6 +720,21 @@ function openPanel(p, distancePretty){
     <div class="panel-title">${escapeHtml(p.name)}</div>
     <div class="badge">${escapeHtml(p.category)}</div>
 
+const panelText = document.getElementById("panelText");
+const raw = p.long || p.short || "";
+
+// 1) escape HTML
+const escaped = escapeHtml(raw);
+
+// 2) Markdown → HTML
+const parsed = marked.parse(escaped);
+
+// 3) sanitizza HTML
+const safeHtml = DOMPurify.sanitize(parsed);
+
+// 4) inserisci nel pannello
+panelText.innerHTML = safeHtml;
+
     ${sliderHtml}
 
     <div class="panel-actions">
@@ -734,7 +749,8 @@ function openPanel(p, distancePretty){
       <button class="icon-btn" type="button" data-share-act="copy" aria-label="Copia link">🔗</button>
     </div>
 
-    <div class="panel-text">${escapeHtml(p.long || p.short || "")}</div>
+    <div class="panel-text" id="panelText"></div>
+
 
     ${distancePretty ? `<div class="panel-distance">📍 Distanza: <strong>${escapeHtml(distancePretty)}</strong></div>` : ""}
   `;
@@ -1378,6 +1394,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
+
 
 
 
