@@ -246,9 +246,18 @@ a:visited{
 .panel-text{
   color: var(--text);
   line-height: 1.5;
-  white-space: pre-wrap;
   margin-top: 10px;
+  white-space: normal; /* invece di pre-wrap */
 }
+
+.panel-text p{
+  margin: 0 0 0.6em 0; /* spazio medio tra paragrafi */
+}
+
+.panel-text p:last-child{
+  margin-bottom: 0;
+}
+
 
 .panel-distance{
   color: var(--muted);
@@ -1372,6 +1381,7 @@ html, body{
 .leaflet-bottom{
   bottom: 0 !important;
 }
+
 
 
 
