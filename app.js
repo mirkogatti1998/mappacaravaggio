@@ -712,28 +712,13 @@ function openPanel(p, distancePretty){
     `
     : "";
 
-
-   const directionsUrl = googleMapsDirectionsUrl(p);
+  const directionsUrl = googleMapsDirectionsUrl(p);
   const fav = isFav(p);
 
+  // ✅ HTML puro qui dentro (niente JS dentro la stringa)
   panelContent.innerHTML = `
     <div class="panel-title">${escapeHtml(p.name)}</div>
     <div class="badge">${escapeHtml(p.category)}</div>
-
-const panelText = document.getElementById("panelText");
-const raw = p.long || p.short || "";
-
-// 1) escape HTML
-const escaped = escapeHtml(raw);
-
-// 2) Markdown → HTML
-const parsed = marked.parse(escaped);
-
-// 3) sanitizza HTML
-const safeHtml = DOMPurify.sanitize(parsed);
-
-// 4) inserisci nel pannello
-panelText.innerHTML = safeHtml;
 
     ${sliderHtml}
 
@@ -751,9 +736,17 @@ panelText.innerHTML = safeHtml;
 
     <div class="panel-text" id="panelText"></div>
 
-
     ${distancePretty ? `<div class="panel-distance">📍 Distanza: <strong>${escapeHtml(distancePretty)}</strong></div>` : ""}
   `;
+
+  // ✅ Markdown sicuro: escape HTML -> parse -> sanitize -> render
+  const panelText = document.getElementById("panelText");
+  const raw = p.long || p.short || "";
+
+  const escaped = escapeHtml(raw);              // 1) escape HTML
+  const parsed = marked.parse(escaped);         // 2) Markdown → HTML
+  const safeHtml = DOMPurify.sanitize(parsed);  // 3) sanitizza HTML
+  panelText.innerHTML = safeHtml;               // 4) inserisci nel pannello
 
   sidePanel.classList.remove("hidden");
   sidePanel.setAttribute("aria-hidden", "false");
@@ -779,7 +772,6 @@ panelText.innerHTML = safeHtml;
   if (shareBtn){
     shareBtn.addEventListener("click", () => copyLinkForPoi(p));
   }
-
 
   setupSliderAndLightbox(imgs, p.name);
   setPoiUrlParam(p);
