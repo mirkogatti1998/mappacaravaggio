@@ -580,7 +580,7 @@ const categoryIcons = {
   "Parcheggio": makeIcon("icons/parcheggio.png"),
   "Località": makeIcon("icons/localita.png"),
   "Luoghi": makeIcon("icons/localita.png"),
-  "Emergenza": makeIcon("icons/emergenza.png"),
+  "Postazione di polizia": makeIcon("icons/polizia.png"),
 };
 const defaultIcon = makeIcon("icons/default.png");
 
