@@ -1381,6 +1381,45 @@ html, body{
 .leaflet-bottom{
   bottom: 0 !important;
 }
+.disclaimer{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.disclaimer.hidden{
+  display: none;
+}
+
+.disclaimer-box{
+  background: #1c1c1c;
+  color: white;
+  padding: 20px;
+  max-width: 420px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.disclaimer-box a{
+  color: #f2c94c;
+}
+
+.disclaimer-box button{
+  margin-top: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background: #f2c94c;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 
 
 
