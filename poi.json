@@ -21,7 +21,17 @@
     "links": [],
     "imgs": []
   },
-   
+    {
+    "name": "Confraternita del Santissimo Sacramento",
+    "type": "see-MANCANTE",
+    "category": "Chiese e monasteri-MANCANTE",
+    "short": "",
+    "long": "",
+    "lat": 45.4964796,
+    "lon": 9.6452058,
+    "links": [],
+    "imgs": []
+  }, 
   
   {
     "name": "Rione Fulser",
@@ -1228,17 +1238,7 @@
     "links": [],
     "imgs": []
   },
-  {
-    "name": "Confraternita del Santissimo Sacramento",
-    "type": "see",
-    "category": "Chiese e monasteri",
-    "short": "",
-    "long": "",
-    "lat": 45.4964796,
-    "lon": 9.6452058,
-    "links": [],
-    "imgs": []
-  },
+
    
   {
     "name": "Achille Stuani",
