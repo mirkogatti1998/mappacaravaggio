@@ -575,14 +575,43 @@ const categoryIcons = {
   "Tesori nascosti": makeIcon("icons/tesorinascosti.png"),
   "Edifici": makeIcon("icons/edificio.png"),
   "DAE": makeIcon("icons/DAE.png"),
+  "Farmacia": makeIcon ("icons/farmacia.png"),
   "Stazione del treno": makeIcon("icons/treno.png"),
   "Stazione del bus": makeIcon("icons/bus.png"),
   "Parcheggio": makeIcon("icons/parcheggio.png"),
   "Località": makeIcon("icons/localita.png"),
   "Luoghi": makeIcon("icons/localita.png"),
-  "Postazione di polizia": makeIcon("icons/polizia.png"),
+  "Postazione di polizia": makeIcon("icons/polizia.png")
 };
+
 const defaultIcon = makeIcon("icons/default.png");
+
+// --- varianti "lost" (type === "lost") per alcune categorie ---
+const lostTypeIcons = {
+  "Chiese e monasteri": makeIcon("icons/chiesesco.png"),
+  "Opere militari e fortificazioni": makeIcon("icons/militarisco.png"),
+  "Edifici": makeIcon("icons/edificisco.png"),
+};
+
+// Helper: normalizza type in modo robusto
+function normalizeType(t) {
+  return String(t || "").trim().toLowerCase(); // "lost" / "see"
+}
+
+// Questa è la funzione da usare quando crei i marker
+function getIconForFeature(feature) {
+  const categoria = feature?.properties?.categoria || feature?.properties?.category;
+  const type = normalizeType(feature?.properties?.type);
+
+  // Se è "lost" e la categoria è tra quelle speciali → icona speciale
+  if (type === "lost" && lostTypeIcons[categoria]) {
+    return lostTypeIcons[categoria];
+  }
+
+  // Altrimenti icona standard per categoria
+  return categoryIcons[categoria] || defaultIcon;
+}
+
 
 // ===== 5) Helpers =====
 function escapeHtml(str){
@@ -1343,6 +1372,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
+
 
 
 
