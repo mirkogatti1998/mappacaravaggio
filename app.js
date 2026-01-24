@@ -574,7 +574,7 @@ const categoryIcons = {
   "Storia": makeIcon("icons/storia.png"),
   "Tesori nascosti": makeIcon("icons/tesorinascosti.png"),
   "Edifici": makeIcon("icons/edificio.png"),
-  "DAE": makeIcon("icons/dae.png"),
+  "DAE": makeIcon("icons/DAE.png"),
   "Stazione del treno": makeIcon("icons/treno.png"),
   "Stazione del bus": makeIcon("icons/bus.png"),
   "Parcheggio": makeIcon("icons/parcheggio.png"),
@@ -1343,6 +1343,7 @@ if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./sw.js");
   });
 }
+
 
 
 
