@@ -1233,6 +1233,24 @@ async function init() {
 init();
 
 // ===== Carica Itinerari =====
+const palette = [
+  "#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E",
+  "#9B8CFF", "#FFB020", "#6BA368", "#B85C38",
+  "#5F7DA3", "#8E6C8A", "#A3A847", "#3F8F8B",
+  "#C27C2C", "#7A5C3E"
+];
+
+const colorByName = new Map();
+let colorIndex = 0;
+
+function getColorForName(name){
+  if (colorByName.has(name)) return colorByName.get(name);
+  const c = palette[colorIndex % palette.length];
+  colorByName.set(name, c);
+  colorIndex++;
+  return c;
+}
+
 async function loadItinerari(){
   try{
     const res = await fetch("itinerari.geojson", { cache: "no-store" });
@@ -1254,21 +1272,16 @@ async function loadItinerari(){
 
       // stile linee (colori stabili per nome)
       style: (f) => {
-        const t = f.geometry?.type;
-        if (t !== "LineString" && t !== "MultiLineString") return null;
+  const t = f.geometry?.type;
+  if (t !== "LineString" && t !== "MultiLineString") return null;
 
-        const name = String(
-          f.properties?.name || f.properties?.Nome || f.properties?.title || "Itinerario"
-        );
+  const name = String(
+    f.properties?.name || f.properties?.Nome || f.properties?.title || "Itinerario"
+  );
 
-        const palette = ["#C8A15A", "#4DA3FF", "#38D39F", "#F05D5E", "#9B8CFF", "#FFB020", "#6BA368", "#B85C38", "#5F7DA3", "#8E6C8A", "#A3A847", "#3F8F8B", "#C27C2C", "#7A5C3E"];
-
-        let h = 0;
-        for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
-        const color = palette[h % palette.length];
-
-        return { color, weight: 5, opacity: 0.9 };
-      },
+  const color = getColorForName(name);
+  return { color, weight: 5, opacity: 0.9 };
+},
 
       // punti pericolosi come cerchi rossi (sotto ai marker)
       pointToLayer: (f, latlng) => {
