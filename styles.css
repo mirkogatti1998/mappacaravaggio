@@ -225,31 +225,40 @@ a:visited{
 .panel-head{
   display: flex;
   align-items: center;
+  justify-content: flex-end;   /* la X resta a destra */
   gap: 12px;
-  margin-bottom: 2px;
 
-  /* sticky quando scrolli */
+  /* sticky “pulito” */
   position: sticky;
   top: 0;
   z-index: 10;
 
-  /* fondo coerente col pannello (copre il testo sotto) */
-  background: rgba(34,26,21,.92);
-  padding-top: 8px;
-  padding-bottom: 8px;
+  /* questo è IL punto: copri quello che scorre sotto */
+  padding: 10px 0 10px;        /* più aria sopra/sotto, ma senza sballare la card */
+  margin: -12px -14px 6px;     /* “aggancia” la head ai padding del pannello */
+  padding-left: 14px;
+  padding-right: 14px;
 
-  /* IMPORTANTISSIMO: taglia qualsiasi cosa “sotto” */
-  overflow: hidden;
+  /* stesso colore/feel del pannello -> niente stacco */
+  background: linear-gradient(
+    to bottom,
+    rgba(34,26,21,.98) 0%,
+    rgba(34,26,21,.95) 70%,
+    rgba(34,26,21,0) 100%
+  );
+
+  /* opzionale ma fa molto “premium” se supportato */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* la linea “riempie” tutto lo spazio fino alla X */
+/* lineetta che arriva FINO alla X */
 .panel-head::before{
-  content: "";
-  flex: 1 1 auto;          /* <-- questo è il punto */
+  content:"";
+  flex: 1;                     /* prende tutto lo spazio disponibile */
   height: 1px;
-  background: rgba(200,161,90,.28);  /* oro più morbido, meno “appiccicato” */
-  display: block;
-  opacity: .9;
+  background: rgba(200,161,90,.35);  /* identico mood del badge */
+  opacity: 1;
 }
 
 .panel-title{
