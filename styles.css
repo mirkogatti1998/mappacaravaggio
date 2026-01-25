@@ -230,7 +230,7 @@ a:visited{
 
 .panel-title{
   font-size: 20px;
-  margin: 6px 0 6px;
+  margin: 4px 0 2px;
 }
 
 .badge{
@@ -240,7 +240,7 @@ a:visited{
   border: 1px solid rgba(200,161,90,.35);
   color: #C8A15A;
   font-size: 12px;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
 }
 
 .panel-text{
