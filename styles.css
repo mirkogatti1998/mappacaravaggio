@@ -226,6 +226,18 @@ a:visited{
   display: flex;
   align-items: center;
   margin-bottom: 2px;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(34,26,21,.95),
+    rgba(34,26,21,.75),
+    rgba(34,26,21,0)
+  );
+  padding-top: 6px;
 }
 
 /* linea che si allunga fino alla X */
