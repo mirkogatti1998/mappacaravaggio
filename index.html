@@ -143,11 +143,17 @@
   <div id="nearbyList" class="poi-list"></div>
 </div>
 
-<div id="favsDrawer" class="cats-drawer hidden" aria-hidden="true" role="dialog" aria-label="Preferiti">
+<div id="favsDrawer" class="cats-drawer hidden">
   <div class="cats-drawer-head">
     <strong>Preferiti</strong>
-    <button id="closeFavs" class="close-btn" type="button" aria-label="Chiudi">✕</button>
+    <button id="closeFavs" class="close-btn" type="button">✕</button>
   </div>
+
+  <!-- QUI VA IL BOTTONE -->
+  <button id="toggleOnlyFavs" class="level-chip" type="button" aria-pressed="false">
+    Mostra solo preferiti
+  </button>
+
   <div id="favsList" class="poi-list"></div>
 </div>
 <div id="servicesDisclaimer" class="disclaimer hidden">
