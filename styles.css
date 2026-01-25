@@ -223,18 +223,18 @@ a:visited{
 .side-panel.hidden{ display:none; }
 
 .panel-head{
-  display:flex;
-  justify-content: space-between; /* invece di solo a destra */
+  display: flex;
   align-items: center;
   margin-bottom: 2px;
 }
 
+/* linea che si allunga fino alla X */
 .panel-head::before{
   content:"";
-  width: 28px;
+  flex: 1;                 /* <-- si estende automaticamente */
   height: 1px;
   background: rgba(200,161,90,.45);
-  display:block;
+  margin-right: 8px;      /* spazio prima della X */
 }
 
 .panel-title{
