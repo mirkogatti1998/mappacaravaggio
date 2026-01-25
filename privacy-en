@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy Policy – Map of Caravaggio</title>
+  <link rel="stylesheet" href="legal.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#1b1410">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body class="legal">
+  <header class="legal-top">
+    <a class="legal-back" href="en.html">← Back to the map</a>
+  </header>
+
+  <main class="legal-wrap">
+    <article class="legal-card">
+      <h1>Privacy Policy</h1>
+
+      <p>This application is a personal experimental project created by <strong>Mirko Gatti</strong>.</p>
+
+      <h2>Data controller</h2>
+      <p>The data controller is <strong>Mirko Gatti</strong>, who can be contacted at the following email address: <strong>mirko.gatti1998@gmail.com</strong>.</p>
+
+      <h2>Data processed</h2>
+      <p>The app may process only the following data:</p>
+      <ul>
+        <li><strong>User’s geographical location</strong>, only if access is authorised by the browser.</li>
+        <li><strong>Favourites</strong> saved by the user, stored locally on the device via LocalStorage.</li>
+      </ul>
+
+      <h2>Purpose of data processing</h2>
+      <p>The data are used exclusively to:</p>
+      <ul>
+        <li>Show places near the user’s location;</li>
+        <li>Allow users to save their favourite places.</li>
+      </ul>
+
+      <p>
+        The processing of personal data is based on the <strong>user’s consent</strong>
+        (Art. 6(1)(a) of Regulation (EU) 2016/679 – GDPR), expressed through:
+      </p>
+      <ul>
+        <li>authorisation of geolocation;</li>
+        <li>voluntary use of the “Favourites” function.</li>
+      </ul>
+
+      <h2>Methods of processing</h2>
+      <p>The data:</p>
+      <ul>
+        <li>are not transmitted to external servers;</li>
+        <li>are not stored in remote databases;</li>
+        <li>are stored exclusively on the user’s device.</li>
+      </ul>
+
+      <h2>Data retention</h2>
+      <p>The data are stored locally until the user:</p>
+      <ul>
+        <li>withdraws consent to geolocation in the browser;</li>
+        <li>clears the site data from their browser.</li>
+      </ul>
+
+      <h2>Data sharing</h2>
+      <p>
+        No personal data are disclosed or transferred to third parties by the operators of the app.
+        The geographical location is processed locally by the user’s browser solely in order to show nearby places.
+        The site uses third-party map services; such services may receive technical navigation data
+        (for example, the IP address) necessary for the functioning of the maps.
+      </p>
+
+      <h2>External services</h2>
+      <p>
+        Maps are displayed through third-party services (<strong>CARTO</strong> and <strong>OpenStreetMap</strong>).
+        The app also uses external technical libraries (Leaflet, CDN) solely for the proper functioning of the interface.
+      </p>
+
+      <h2>Local storage technologies</h2>
+      <p>The app uses only local storage technologies (LocalStorage and Cache Storage) in order to:</p>
+      <ul>
+        <li>save favourites;</li>
+        <li>enable offline use.</li>
+      </ul>
+      <p>No profiling cookies or tracking tools are used.</p>
+
+      <h2>User rights</h2>
+      <p>Under Articles 15–22 of the GDPR, users have the right to:</p>
+      <ul>
+        <li>access their data;</li>
+        <li>request deletion of their data;</li>
+        <li>restrict or object to processing;</li>
+        <li>withdraw consent at any time.</li>
+      </ul>
+
+      <h2>Changes to this policy</h2>
+      <p>This policy may be updated in the event of functional changes to the application.</p>
+
+    </article>
+
+    <footer class="legal-foot">
+      Personal experimental project — Mirko Gatti<br>
+      Maps: CARTO / OpenStreetMap contributors • Icons: Map Icons Collection (CC BY-SA 3.0)
+    </footer>
+  </main>
+</body>
+</html>
