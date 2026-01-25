@@ -15,7 +15,10 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
   maxZoom: 19,
   attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
 }).addTo(map);
-
+// se l’utente trascina la mappa, smetti di seguirlo (stile Maps)
+map.on("dragstart", () => {
+  if (tracking) followUser = false;
+});
 // ===== Pane itinerari (sotto ai marker) =====
 map.createPane("routesPane");
 map.getPane("routesPane").style.zIndex = 350; // markerPane è sopra (~600)
@@ -50,7 +53,10 @@ let trackStartMs = 0;
 let trackMeters = 0;
 let lastLatLng = null;
 let uiTimer = null;
-
+let followUser = true;
+let didAutoCenter = false;
+let userMarker = null;
+let accCircle = null;
 let exitRouteCtrl = null;
 let routeInfoCtrl = null;
 let trackCtrl = null;
@@ -180,7 +186,8 @@ function startTracking(){
   trackStartMs = Date.now();
   trackMeters = 0;
   lastLatLng = null;
-
+followUser = true;
+didAutoCenter = false;
   if (uiTimer) clearInterval(uiTimer);
   uiTimer = setInterval(updateTrackUI, 1000);
 
@@ -191,7 +198,31 @@ function startTracking(){
 
       // filtro: ignora GPS troppo impreciso
       if (accuracy && accuracy > 35) return;
+// marker posizione utente + cerchio accuratezza
+if (!userMarker){
+  userMarker = L.circleMarker(cur, { radius: 7, weight: 2 });
+  userMarker.addTo(map);
+} else {
+  userMarker.setLatLng(cur);
+}
 
+if (!accCircle){
+  accCircle = L.circle(cur, { radius: accuracy || 0, weight: 1, fillOpacity: 0.08 });
+  accCircle.addTo(map);
+} else {
+  accCircle.setLatLng(cur);
+  if (accuracy) accCircle.setRadius(accuracy);
+}
+
+// comportamento "Maps": al primo fix centra forte, poi segue con pan
+if (followUser){
+  if (!didAutoCenter){
+    map.setView(cur, Math.max(map.getZoom(), 17), { animate: true });
+    didAutoCenter = true;
+  } else {
+    map.panTo(cur, { animate: true });
+  }
+}
       if (lastLatLng){
         const d = lastLatLng.distanceTo(cur);
         // ignora jitter sotto 10m
@@ -222,7 +253,14 @@ function stopTracking(){
     clearInterval(uiTimer);
     uiTimer = null;
   }
-
+if (userMarker){
+  map.removeLayer(userMarker);
+  userMarker = null;
+}
+if (accCircle){
+  map.removeLayer(accCircle);
+  accCircle = null;
+}
   updateTrackUI();
 }
 
