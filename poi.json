@@ -71,7 +71,8 @@
     "links": [],
     "imgs": [
       "img/vicinato1.jpg",
-      "img/vicinato2.JPEG"
+      "img/vicinato2.JPEG",
+      img/vicinato2.jpeg
     ]
   },
   {
@@ -107,7 +108,9 @@
     "lat": 45.4951843,
     "lon": 9.6423993,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/portanuova3.jpeg
+    ]
   },
   {
     "name": "Località Gavazzolo",
@@ -370,7 +373,9 @@
     "lat": 45.4644978,
     "lon": 9.656297,
     "links": [],
-    "imgs": []
+    "imgs": ["img/acque1.jpeg",
+    "img/acque2.jpeg
+    ]
   },
   {
     "name": "Scuole vecchie",
@@ -382,7 +387,7 @@
     "lon": 9.6456122,
     "links": [],
     "imgs": [
-      "img/scuolevecchie1.JPEG"
+      "img/scuolevecchie.jpeg"
     ]
   },
   {
@@ -549,7 +554,9 @@
     "lat": 45.490683,
     "lon": 9.6385345,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/viale2.jpeg
+    ]
   },
 
   {
@@ -670,7 +677,9 @@
     "lat": 45.4972201,
     "lon": 9.6439341,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/municipio1.jpeg
+    ]
   },
   {
     "name": "Monastero Ospedale dei Cistercensi",
@@ -776,7 +785,8 @@
     "lon": 9.6407711,
     "links": [],
     "imgs": [
-      "img/scuolemerisi1.JPEG"
+      "img/scuolemerisi1.JPEG",
+      img/scuolemerisi2.jpeg
     ]
   },
   {
@@ -843,7 +853,10 @@
     "lat": 45.50014,
     "lon": 9.6542851,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/eusebio1.jpeg,
+      img/eusebio2.jpeg
+    ]
   },
   {
     "name": "Chiesa di Santa Elisabetta e monastero delle Agostiniane",
@@ -1084,7 +1097,7 @@
     "lat": 45.4990922,
     "lon": 9.6441035,
     "links": [],
-    "imgs": ["img/stemma.jpeg"]
+    "imgs": ["img/stemma1.jpeg"]
   },
   {
     "name": "Portone con putti",
@@ -1095,7 +1108,9 @@
     "lat": 45.4982542,
     "lon": 9.6432385,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/putti1.jpeg
+    ]
   },
   {
     "name": "Circonvallazione XXV Aprile",
@@ -1144,7 +1159,8 @@
     "lon": 9.645566,
     "links": [],
     "imgs": [
-      "img/spiranella.jpeg"
+      "img/spiranella.jpeg",
+      img/spiranella2.jpeg
     ]
   },
   {
@@ -1156,7 +1172,11 @@
     "lat": 45.5197618,
     "lon": 9.6660446,
     "links": [],
-    "imgs": []
+    "imgs": [
+      img/brancaleone1.jpeg,
+      img/brancaleone2.jpeg,
+      img/brancaleone3.jpeg
+    ]
   },
   {
     "name": "Sentiero dei Livelli (Capralba)",
