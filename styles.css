@@ -225,37 +225,16 @@ a:visited{
 .panel-head{
   display: flex;
   align-items: center;
-  gap: 12px;
-
-  position: sticky;
-  top: 0;
-  z-index: 10;
-
-  /* IMPORTANTI: estendi lo sticky fino ai bordi del pannello */
-  margin: -12px -14px 10px;     /* = -padding-top e -padding-l/r della side-panel */
-  padding: 10px 14px 10px;      /* header più compatto e coerente */
-
-  /* stesso identico “materiale” del pannello (niente patch visiva) */
-  background: var(--paper-noise), var(--panel);
-
-  /* angoli tondi come la card */
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-
-  /* separatore leggero sotto lo sticky */
-  border-bottom: 1px solid rgba(242,233,220,.10);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 2px;
 }
 
-/* la linea “riempie” tutto lo spazio fino alla X */
+/* linea che si allunga fino alla X */
 .panel-head::before{
   content:"";
-  flex: 1 1 auto;
+  flex: 1;                 /* <-- si estende automaticamente */
   height: 1px;
-  background: rgba(200,161,90,.35);
-  display:block;
-  opacity: .9;
+  background: rgba(200,161,90,.45);
+  margin-right: 8px;      /* spazio prima della X */
 }
 
 .panel-title{
