@@ -224,8 +224,17 @@ a:visited{
 
 .panel-head{
   display:flex;
-  justify-content:flex-end;
+  justify-content: space-between; /* invece di solo a destra */
+  align-items: center;
   margin-bottom: 2px;
+}
+
+.panel-head::before{
+  content:"";
+  width: 28px;
+  height: 1px;
+  background: rgba(200,161,90,.45);
+  display:block;
 }
 
 .panel-title{
