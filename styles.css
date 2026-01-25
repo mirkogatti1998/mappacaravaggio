@@ -222,38 +222,39 @@ a:visited{
 }
 .side-panel.hidden{ display:none; }
 
-/* HEAD “sticky” che copre davvero tutta la testa, con angoli della card */
 .panel-head{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
   position: sticky;
   top: 0;
   z-index: 10;
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  /* IMPORTANTI: estendi lo sticky fino ai bordi del pannello */
+  margin: -12px -14px 10px;     /* = -padding-top e -padding-l/r della side-panel */
+  padding: 10px 14px 10px;      /* header più compatto e coerente */
 
-  /* allarga la fascia fino ai bordi della card (annulla il padding del pannello) */
-  margin: -12px -14px 8px;         /* -padding-top, -padding-x della .side-panel */
-  padding: 10px 14px 10px;         /* padding interno della fascia */
+  /* stesso identico “materiale” del pannello (niente patch visiva) */
+  background: var(--paper-noise), var(--panel);
 
-  /* stesso rounding sopra della card */
+  /* angoli tondi come la card */
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 
-  /* copertura vera: niente trasparenze “bucherellate” */
-  background: rgba(34,26,21,.96);
-
-  /* IMPORTANTI: evita che testo/elementi sotto trapelino ai bordi arrotondati */
-  overflow: hidden;
+  /* separatore leggero sotto lo sticky */
+  border-bottom: 1px solid rgba(242,233,220,.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* lineetta che arriva fino alla X (riempie lo spazio) */
+/* la linea “riempie” tutto lo spazio fino alla X */
 .panel-head::before{
   content:"";
+  flex: 1 1 auto;
   height: 1px;
-  background: rgba(200,161,90,.45);
-  flex: 1;                 /* prende tutto lo spazio disponibile */
-  margin-right: 12px;      /* distanza dalla X */
+  background: rgba(200,161,90,.35);
+  display:block;
   opacity: .9;
 }
 
