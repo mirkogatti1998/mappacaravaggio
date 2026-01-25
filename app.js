@@ -453,8 +453,13 @@ const toggleLevels = document.getElementById("toggleLevels");
 const levelsDrawer = document.getElementById("levelsDrawer");
 const closeLevels = document.getElementById("closeLevels");
 const levelsList = document.getElementById("levelsList");
+const toggleRoutes = document.getElementById("toggleRoutes");
 
-function openLevels(){ openDrawer(levelsDrawer); syncLevelsUI(); }
+function openLevels(){
+  openDrawer(levelsDrawer);
+  syncLevelsUI();
+  syncRoutesUI();
+}
 function closeLevelsDrawer(){ closeDrawer(levelsDrawer); }
 
 if (toggleLevels) toggleLevels.addEventListener("click", () => {
@@ -462,6 +467,19 @@ if (toggleLevels) toggleLevels.addEventListener("click", () => {
   levelsDrawer.classList.contains("hidden") ? openLevels() : closeLevelsDrawer();
 });
 if (closeLevels) closeLevels.addEventListener("click", closeLevelsDrawer);
+
+function syncRoutesUI(){
+  if (!toggleRoutes) return;
+  toggleRoutes.classList.toggle("active", routesVisible);
+  toggleRoutes.setAttribute("aria-pressed", routesVisible ? "true" : "false");
+}
+
+if (toggleRoutes){
+  toggleRoutes.addEventListener("click", () => {
+    setRoutesVisible(!routesVisible);
+    syncRoutesUI();
+  });
+}
 
 function setLevel(mode){
   // ✅ includi anche "services" quando scegli "Tutti"
@@ -972,11 +990,7 @@ function updateLegendActiveState(){
 
   legendEl.querySelectorAll(".legend-item").forEach(el => {
 
-    // caso speciale: bottone "Percorsi"
-    if (el.dataset.cat === "__routes__") {
-      el.classList.toggle("active", routesVisible);
-      return;
-    }
+  
 
     // comportamento normale: categorie POI
     el.classList.toggle(
@@ -989,24 +1003,7 @@ function updateLegendActiveState(){
 function buildLegend(){
   if (!legendEl) return;
   legendEl.innerHTML = "";
-// --- toggle percorsi (sempre in cima) ---
-{
-  const row = document.createElement("div");
-  row.className = "legend-item";
-  row.dataset.cat = "__routes__";
-  row.innerHTML = `
-    <div class="legend-left">
-      <img class="legend-icon" src="icons/default.png" alt="">
-      <div class="legend-name">Percorsi</div>
-    </div>
-    <div class="legend-count">${routePolylines.length || ""}</div>
-  `;
-  row.addEventListener("click", () => {
-    setRoutesVisible(!routesVisible);
-    closeCatsDrawer();
-  });
-  legendEl.appendChild(row);
-}
+
   const counts = {};
   computeFiltered().forEach(p => {
     if (!p.category) return;
